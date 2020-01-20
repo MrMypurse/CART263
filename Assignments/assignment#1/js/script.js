@@ -20,19 +20,32 @@ function setup() {
     document.body.appendChild(pixel);
     pixel.addEventListener('mouseover', paint);
   }
-  document.addEventListener('keydown, rotate);
+  document.addEventListener('keydown', rotate);
 }
 
 function paint(e) {
+  let red = Math.floor(Math.random() * 256);
+  let green = Math.floor(Math.random() * 256);
+  let blue = Math.floor(Math.random() * 256);
   let pixel = e.target;
-  let r = Math.floor(Math.random() * 256);
-  let g = Math.floor(Math.random() * 256);
-  pixel.style.backgroundColor = "rgb(${r}, ${g}, ${b})";
+  pixel.style.backgroundColor = 'white';
   setTimeout(resetPixel, 1000, pixel);
 }
 
 
-
 function resetPixel(pixel) {
   pixel.style.backgroundColor = "black";
+}
+
+function rotate(e) {
+  let document = e.target;
+  if (keyCode === 39){
+    rotation += 1;
+    document.style.transform = 'rotation(${rotation})';
+  }
+  if (keyCode === 37){
+    rotation -= 1;
+    document.style.transform = 'rotation(${rotation})';
+  }
+
 }
