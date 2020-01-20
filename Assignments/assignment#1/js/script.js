@@ -14,21 +14,20 @@ let rotation = 0;
 
 function setup() {
   console.log("Document loaded.");
-  for (var i = 0; i < 1300; i++) {
+  for (var i = 0; i < 1000; i++) {
     let pixel = document.createElement('div');
     pixel.setAttribute('class', 'pixel');
     document.body.appendChild(pixel);
     pixel.addEventListener('mouseover', paint);
   }
-
+  document.addEventListener('keydown, rotate);
 }
 
 function paint(e) {
   let pixel = e.target;
-  let r = Math.floor(Math.random()*356);
-  let g = Math.floor(Math.random()*356);
-  let b = Math.floor(Math.random()*356);
-  pixel.style.backgroundColor = "rgb:${r}${g}${b}";
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  pixel.style.backgroundColor = "rgb(${r}, ${g}, ${b})";
   setTimeout(resetPixel, 1000, pixel);
 }
 
