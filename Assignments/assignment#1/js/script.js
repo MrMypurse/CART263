@@ -28,7 +28,7 @@ function paint(e) {
   let green = Math.floor(Math.random() * 256);
   let blue = Math.floor(Math.random() * 256);
   let pixel = e.target;
-  pixel.style.backgroundColor = 'white';
+  pixel.style.backgroundColor = 'rgb(${red}, ${green}, ${blue})';
   setTimeout(resetPixel, 1000, pixel);
 }
 
@@ -39,13 +39,13 @@ function resetPixel(pixel) {
 
 function rotate(e) {
   let document = e.target;
-  if (keyCode === 39){
+  if (e.keyCode === 39){
     rotation += 1;
-    document.style.transform = 'rotation(${rotation})';
+    document.style.transform = 'rotate(${rotation}deg)';
   }
-  if (keyCode === 37){
+  if (e.keyCode === 37){
     rotation -= 1;
-    document.style.transform = 'rotation(${rotation})';
+    document.style.transform = 'rotate(${rotation}deg)';
   }
 
 }
