@@ -2,27 +2,28 @@
 
 /********************************************************************
 
-Title of Project
-Author Name
+Pixel Painter
+Janet Sun
 
-This is a template. Fill in the title, author, and this description
-to match your project! Write JavaScript to do amazing things below!
+This is assignment #1. The use uses mouse to draw on the black canvas.
 
 *********************************************************************/
 window.onload = setup;
+let rotation = 0;
 
-function setup(){
+
+function setup() {
   console.log("Document loaded.");
-  for (var i = 0; i < 1000; i++) {
+  for (var i = 0; i < 1300; i++) {
     let pixel = document.createElement('div');
     pixel.setAttribute('class', 'pixel');
     document.body.appendChild(pixel);
-    pixel.addEventListener('mouseover',paint);
+    pixel.addEventListener('mouseover', paint);
   }
 
 }
 
-function paint(e){
+function paint(e) {
   let pixel = e.target;
   pixel.style.backgroundColor = "white";
   setTimeout(resetPixel, 1000, pixel);
@@ -30,6 +31,6 @@ function paint(e){
 
 
 
-function resetPixel(pixel){
-    pixel.style.backgroundColor = "black";
+function resetPixel(pixel) {
+  pixel.style.backgroundColor = "black";
 }
