@@ -28,7 +28,7 @@ function paint(e) {
   let green = Math.floor(Math.random() * 256);
   let blue = Math.floor(Math.random() * 256);
   let pixel = e.target;
-  pixel.style.backgroundColor = 'rgb(${red}, ${green}, ${blue})';
+  pixel.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
   setTimeout(resetPixel, 1000, pixel);
 }
 
@@ -38,14 +38,15 @@ function resetPixel(pixel) {
 }
 
 function rotate(e) {
-  let pixels = document.getElementByClassName("pixel");
+  let pixels = document.getElementsByClassName("pixel");
   if (e.keyCode === 39){
     rotation += 1;
   }
   if (e.keyCode === 37){
     rotation -= 1;
   }
+  console.log(pixels.length, rotation);
   for (var i = 0; i < pixels.length; i++) {
-    pixels[i].style.tranform = 'rotate(${rotation}deg)';
+    pixels[i].style.transform = `rotate(${rotation}deg)`;
   }
 }
