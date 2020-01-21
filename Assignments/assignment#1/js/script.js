@@ -38,14 +38,14 @@ function resetPixel(pixel) {
 }
 
 function rotate(e) {
-  let document = e.target;
+  let pixels = document.getElementByClassName("pixel");
   if (e.keyCode === 39){
     rotation += 1;
-    document.style.transform = 'rotate(${rotation}deg)';
   }
   if (e.keyCode === 37){
     rotation -= 1;
-    document.style.transform = 'rotate(${rotation}deg)';
   }
-
+  for (var i = 0; i < pixels.length; i++) {
+    pixels[i].style.tranform = 'rotate(${rotation}deg)';
+  }
 }
