@@ -19,6 +19,9 @@ const UPDATE_FREQUENCY = 500;
 // A place to store the jQuery selection of all spans
 let $spans;
 
+let secretsFound = 0;
+let secretsTotal = $('secret').length;
+
 // When the document is loaded we call the setup function
 $(document).ready(setup);
 
@@ -32,6 +35,8 @@ function setup() {
   $spans.on('click', spanClicked);
   // Set an interval of 500 milliseconds to update the state of the page
   setInterval(update, UPDATE_FREQUENCY);
+
+
 };
 
 // spanClicked()
@@ -64,24 +69,3 @@ function updateSpan() {
     $(this).addClass('revealed');
   }
 }
-
-// A version using anonymous functions if you're interested:
-
-// $(document).ready(function () {
-//   $spans = $('span');
-//
-//   $spans.on('click',function () {
-//     $(this).removeClass('revealed');
-//     $(this).addClass('redacted');
-//   });
-//
-//   setInterval(function () {
-//     $spans.each(function () {
-//       let r = Math.random();
-//       if (r < REVEAL_POSSIBILITY) {
-//         $(this).removeClass('redacted');
-//         $(this).addClass('revealed');
-//       }
-//     });
-//   },UPDATE_FREQUENCY);
-// });
