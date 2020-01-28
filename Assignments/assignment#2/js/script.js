@@ -17,10 +17,11 @@ const REVEAL_POSSIBILITY = 0.1;
 const UPDATE_FREQUENCY = 500;
 
 // A place to store the jQuery selection of all spans
-let $spans;
+let $censors;
+let $secrets;
 
 let secretsFound = 0;
-let secretsTotal = $('secret').length;
+let secretsTotal = 0;
 
 // When the document is loaded we call the setup function
 $(document).ready(setup);
@@ -30,14 +31,18 @@ $(document).ready(setup);
 // Sets the click handler and starts the time loop
 function setup() {
   // Save the selection of all spans (since we do stuff to them multiple times)
-  $spans = $('span');
+  $censors = $('.redacted');
+
+  $secrets = $('.secret');
   // Set a click handler on the spans (so we know when they're clicked)
-  $spans.on('click', spanClicked);
+  $censors.on('click', spanClicked);
   // Set an interval of 500 milliseconds to update the state of the page
   setInterval(update, UPDATE_FREQUENCY);
 
-
-};
+  secretsTotal = $secrets.length;
+  $('#totalNb').text(secretsTotal);
+  $secrets.on('mouseover', secretsOver);
+}
 
 // spanClicked()
 //
@@ -48,13 +53,24 @@ function spanClicked() {
   $(this).addClass('redacted');
 }
 
+function secretsOver() {
+  $(this).addClass('found');
+  $(this).removeClass('secret');
+
+  $(this).off('mouseover');
+  console.log('secrets');
+  secretsFound = secretsFound + 1;
+  $('#foundNb').text(secretsFound);
+  console.log(secretsFound);
+}
+
 // update()
 //
 // Update is called every 500 milliseconds and it updates all the spans on the page
 // using jQuery's each() function which calls the specified function on _each_ of the
 // elements in the selection
 function update() {
-  $spans.each(updateSpan);
+  $censors.each(updateSpan);
 }
 
 // updateSpan()
