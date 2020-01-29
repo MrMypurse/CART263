@@ -45,7 +45,7 @@ function setup() {
   secretsTotal = $secrets.length;
   //Display the result number as text in the span
   $('#totalNb').text(secretsTotal);
-  //"Mouse over"event of all secrets and the event handler
+  //Set up "mouseover"event of all secrets and its event handler function
   $secrets.on('mouseover', secretsOver);
 }
 
@@ -62,7 +62,6 @@ function spanClicked() {
 //
 //When the mouse goes over a secret, the "found" class is added
 //thus highlighting the secret
-//
 function secretsOver() {
   $(this).addClass('found');
   //Stop the "mouseover" event
