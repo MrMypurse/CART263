@@ -8,7 +8,8 @@ Janet Sun
 
 You are redacting a document, but it keeps becoming unredacted!
 Click the secret information to hide it, don't let all the
-secrets become revealed! Ptsss...Top secrets will be highlighted...
+secrets become revealed! Ptsss,Top secrets will be highlighted...
+If you can find them...
 
 ******************/
 
@@ -32,7 +33,7 @@ $(document).ready(setup);
 //
 // Sets the click handler and starts the time loop
 function setup() {
-  // Save the selection of all spans (since we do stuff to them multiple times)
+  // Save the selection of all spans
   $censors = $('.redacted');
   // Store the selection of all secret classes
   $secrets = $('.secret');
@@ -40,9 +41,11 @@ function setup() {
   $censors.on('click', spanClicked);
   // Set an interval of 500 milliseconds to update the state of the page
   setInterval(update, UPDATE_FREQUENCY);
-  //
+  //Calculate the total number of secrets on the page
   secretsTotal = $secrets.length;
+  //Display the result number as text in the span
   $('#totalNb').text(secretsTotal);
+  //"Mouse over"event of all secrets and the event handler
   $secrets.on('mouseover', secretsOver);
 }
 
@@ -55,13 +58,18 @@ function spanClicked() {
   $(this).addClass('redacted');
 }
 
+//secretsOver()
+//
+//When the mouse goes over a secret, the "found" class is added
+//thus highlighting the secret
+//
 function secretsOver() {
   $(this).addClass('found');
-  $(this).removeClass('secret');
-
+  //Stop the "mouseover" event
   $(this).off('mouseover');
-  console.log('secrets');
+  //Add 1 to the number of secrets found everytime
   secretsFound = secretsFound + 1;
+  //Display the resualt number as text in the span
   $('#foundNb').text(secretsFound);
   console.log(secretsFound);
 }
