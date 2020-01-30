@@ -11,23 +11,23 @@ to match your project! Write JavaScript to do amazing things below!
 *********************************************************************/
 $(document).ready(setup);
 
-let $mouth;
-let $fly;
+let $pot;
+let $potion;
 const buzz = new Audio("assets/sounds/buzz.mp3");
 const crunch = new Audio("assets/sounds/crunch.wav");
 
 function setup(){
-  $mouth = $('#mouth');
-  $fly = $('#fly');
-  $fly.draggable();
-  $mouth.droppable({
+  $pot = $('#pot');
+  $potion = $('#potion');
+  $potion.draggable();
+  $pot.droppable({
     drop: onDrop
   });
   buzz.loop = true;
-  $fly.on("mousedown", function(){
-    buzz.play(); 
+  $potion.on("mousedown", function(){
+    buzz.play();
   })
-  $fly.on("mouseup", function(){
+  $potion.on("mouseup", function(){
     buzz.pause();
   })
 }
@@ -40,10 +40,10 @@ function onDrop(event, ui){
 }
 
 function chew(){
-  if($mouth.attr("src") === "assets/images/mouth-open.png"){
-    $mouth.attr("src", "assets/images/mouth-closed.png");
+  if($pot.attr("src") === "assets/images/pot.png"){
+    $pot.attr("src", "assets/images/pot2.png");
     crunch.play();
   }else{
-    $mouth.attr("src", "assets/images/mouth-open.png");
+    $pot.attr("src", "assets/images/pot.png");
   }
 }
