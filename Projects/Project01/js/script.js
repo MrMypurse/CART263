@@ -13,37 +13,37 @@ $(document).ready(setup);
 
 let $pot;
 let $potion;
-const buzz = new Audio("assets/sounds/buzz.mp3");
-const crunch = new Audio("assets/sounds/crunch.wav");
+const buzz = new Audio('assets/sounds/buzz.mp3');
+const crunch = new Audio('assets/sounds/crunch.wav');
 
 function setup(){
   $pot = $('#pot');
-  $potion = $('#potion');
+  $potion = $('.potion');
   $potion.draggable();
   $pot.droppable({
     drop: onDrop
   });
   buzz.loop = true;
-  $potion.on("mousedown", function(){
+  $potion.on('mousedown', function(){
     buzz.play();
   })
-  $potion.on("mouseup", function(){
+  $potion.on('mouseup', function(){
     buzz.pause();
   })
 }
 
 function onDrop(event, ui){
-  console.log("DROPPED");
+  console.log('DROPPED');
   ui.draggable.remove();
   buzz.pause();
-  setInterval(chew, 300);
+  setInterval(pour, 300);
 }
 
-function chew(){
-  if($pot.attr("src") === "assets/images/pot.png"){
-    $pot.attr("src", "assets/images/pot2.png");
+function pour(){
+  if($pot.attr('src') === 'assets/images/pot.png'){
+    $pot.attr('src', 'assets/images/pot2.png');
     crunch.play();
   }else{
-    $pot.attr("src", "assets/images/pot.png");
+    $pot.attr('src', 'assets/images/pot.png');
   }
 }
