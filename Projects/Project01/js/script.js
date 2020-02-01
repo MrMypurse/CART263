@@ -40,10 +40,10 @@ function onDrop(event, ui){
 }
 
 function pour(){
-  if($pot.attr('src') === 'assets/images/pot.png'){
-    $pot.attr('src', 'assets/images/pot2.png');
+  if($pot.attr('src') === 'assets/images/pot0.png'){
+    $pot.attr('src', 'assets/images/pot1.png');
     crunch.play();
   }else{
-    $pot.attr('src', 'assets/images/pot.png');
+    $pot.attr('src', 'assets/images/pot0.png');
   }
 }
