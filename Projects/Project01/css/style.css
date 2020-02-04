@@ -38,8 +38,13 @@ body {
   border: 5px solid white;
   text-aligh: center;
   font-family: 'Press Start 2P', cursive;
-  font-size: 36px;
+  font-size: 40px;
   color: black;
+}
+
+#button:hover{
+  background-color: black;
+  color: white;
 }
 
 #instruction{
