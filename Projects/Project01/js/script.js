@@ -23,7 +23,7 @@ const stirring = new Audio('assets/sounds/stir.wav');
 //setup()
 //
 //set up all variables and make objects draggable when the game starts
-function setup(){
+function setup() {
   //assign all variables to objects
   $pot = $('#pot');
   $potion = $('.potion');
@@ -40,7 +40,7 @@ function setup(){
 //onDrop()
 //
 //dropping the potion in the pot
-function onDrop(event, ui){
+function onDrop(event, ui) {
   //check if the potion is dropping
   console.log('DROPPED');
   //play sound effect of potion pouring
@@ -56,7 +56,7 @@ function onDrop(event, ui){
 //
 //"strring" the pot when the player clickes on the button and by changing the
 //animation frame number every click
-function stir(){
+function stir() {
   //Add 1 to the clickNumber everytime the player clicks the button
   clickNumber += 1;
   //play sound effect of stirring liquid
@@ -64,11 +64,11 @@ function stir(){
   //make sure that the clickNumber is adding everytime the player clicks
   console.log(clickNumber);
   //assign the click number to the frame number to change animation frames
-  $pot.attr(`src`,`assets/images/pot${clickNumber}.png`);
+  $pot.attr(`src`, `assets/images/pot${clickNumber}.png`);
   //make sure that the stir function is working to call the next animation frame
   console.log(stir);
   //reset the frame number to 0 to loop the animation
-  if(clickNumber >= 17){
+  if (clickNumber >= 17) {
     clickNumber = 0;
     return;
   }

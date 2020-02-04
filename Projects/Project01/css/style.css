@@ -1,5 +1,5 @@
 /* style first div (instruction) and assign specific position*/
-.div1{
+.div1 {
   position: absolute;
   background-color: black;
   right: 150px;
@@ -10,7 +10,7 @@
 }
 
 /* style the second div that contains the pot */
-.div2{
+.div2 {
   position: absolute;
   left: 250px;
   top: 200px;
@@ -19,20 +19,20 @@
 }
 
 /* style the third div which contains all the potions and flex wrap all images */
-.div3{
+.div3 {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
 }
 
 /* change potion images' size */
-.potion{
+.potion {
   width: 250px;
   height: 250px;
 }
 
 /* style the button */
-#button{
+#button {
   background-color: white;
   border: 5px solid white;
   text-aligh: center;
@@ -42,13 +42,13 @@
 }
 
 /* style the hover effect */
-#button:hover{
+#button:hover {
   background-color: black;
   color: white;
 }
 
 /* style the instruction, including modifying its size and position */
-#instruction{
+#instruction {
   font-family: 'Press Start 2P', cursive;
   color: white;
 }
