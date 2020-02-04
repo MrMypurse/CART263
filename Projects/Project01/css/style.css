@@ -1,12 +1,14 @@
+body{
+  background-color: #f0f0f0;
+}
 /* style first div (instruction) and assign specific position*/
 .div1 {
   position: absolute;
   background-color: black;
-  right: 150px;
-  top: 200px;
-  width: 350px;
-  height: 500px;
-  border: 20px solid black;
+  right: 100px;
+  width: 50vh;
+  height: 100vh;
+  border: 40px solid black;
 }
 
 /* style the second div that contains the pot */
@@ -37,7 +39,7 @@
   border: 5px solid white;
   text-aligh: center;
   font-family: 'Press Start 2P', cursive;
-  font-size: 40px;
+  font-size: 50px;
   color: black;
 }
 
@@ -49,6 +51,8 @@
 
 /* style the instruction, including modifying its size and position */
 #instruction {
+  letter-spacing: 6px;
+  line-height: 2;
   font-family: 'Press Start 2P', cursive;
   color: white;
 }
