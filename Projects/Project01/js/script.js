@@ -19,6 +19,7 @@ let $button;
 let clickNumber = 0;
 const pourring = new Audio('assets/sounds/pour.wav');
 const stirring = new Audio('assets/sounds/stir.wav');
+const click = new Audio('assets/sounds/click.wav');
 
 //setup()
 //
@@ -59,6 +60,8 @@ function onDrop(event, ui) {
 function stir() {
   //Add 1 to the clickNumber everytime the player clicks the button
   clickNumber += 1;
+  //play sound effect of mouse clicking
+  click.play();
   //play sound effect of stirring liquid
   stirring.play();
   //make sure that the clickNumber is adding everytime the player clicks
@@ -69,7 +72,7 @@ function stir() {
   console.log(stir);
   //reset the frame number to 0 to loop the animation
   if (clickNumber >= 17) {
-    clickNumber = 0;
+    clickNumber = 1;
     return;
   }
 }
