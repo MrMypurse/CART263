@@ -1,34 +1,32 @@
 body {
 }
 
-#div1{
+.div1{
   position: absolute;
-  left: 50px;
+  right: 50px;
   top: 30px;
-  width: 300px;
-  height: 700px;
-  border: 10px solid blue;
-}
-#div3{
-  position: absolute;
-  left: 1200px;
-  top: 30px;
-  width: 300px;
+  width: 350px;
   height: 700px;
   border: 10px solid blue;
 }
 
-#pot{
+.div2{
   position: absolute;
-  left: 450px;
+  left: 250px;
   top: 150px;
-  width: 630px;
-  height: 630px;
+  width: 600px;
+  height: 600px;
 }
+
+.div3{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  border: 10px solid blue;
+}
+
 
 .potion{
-  position: relative;
-  right: 300px;
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
 }
