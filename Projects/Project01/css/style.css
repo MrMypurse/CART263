@@ -2,21 +2,32 @@ body {
 }
 
 #div1{
-  width: 1000px;
+  position: absolute;
+  left: 50px;
+  top: 30px;
+  width: 300px;
   height: 700px;
-  border: 70px solid blue;
+  border: 10px solid blue;
+}
+#div3{
+  position: absolute;
+  left: 1200px;
+  top: 30px;
+  width: 300px;
+  height: 700px;
+  border: 10px solid blue;
 }
 
 #pot{
   position: absolute;
-  left: 300px;
-  top: 200px;
-  width: 600px;
-  height: 600px;
+  left: 450px;
+  top: 150px;
+  width: 630px;
+  height: 630px;
 }
 
 .potion{
-  position: absolute;
+  position: relative;
   right: 300px;
   width: 300px;
   height: 300px;
