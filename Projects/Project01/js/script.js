@@ -6,7 +6,7 @@ STIRRING
 Janet Sun
 
 This is a mini stirring game. Player's mission is to pick one "perk potion"
-and generate a new life using mouse to drag, drog and click.
+and generate a new "life" using mouse to drag, drop and click.
 
 *********************************************************************/
 $(document).ready(setup);
