@@ -11,12 +11,13 @@ and generate a new "life" using mouse to drag, drop and click.
 *********************************************************************/
 $(document).ready(setup);
 
-//set up variables to store the pot, potions, number of mouse clicked and
+//set up variables to store the pot, potions,dialog, number of mouse clicked and
 //the audios.
 let $pot;
 let $potion;
 let $button;
 let clickNumber = 0;
+let dialog = "Do not be greedy, you can only pick one"
 const pourring = new Audio('assets/sounds/pour.wav');
 const stirring = new Audio('assets/sounds/stir.wav');
 const click = new Audio('assets/sounds/click.wav');
