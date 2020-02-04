@@ -13,37 +13,40 @@ $(document).ready(setup);
 
 let $pot;
 let $potion;
-const buzz = new Audio('assets/sounds/buzz.mp3');
-const crunch = new Audio('assets/sounds/crunch.wav');
+let $button;
+let clickNumber = 0;
+let frameNumber = 0;
+const pourring = new Audio('assets/sounds/pour.wav');
+const stirring = new Audio('assets/sounds/stir.wav');
 
 function setup(){
   $pot = $('#pot');
   $potion = $('.potion');
+  $button = $('#button');
   $potion.draggable();
   $pot.droppable({
     drop: onDrop
   });
-  buzz.loop = true;
-  $potion.on('mousedown', function(){
-    buzz.play();
-  })
-  $potion.on('mouseup', function(){
-    buzz.pause();
-  })
+
 }
 
 function onDrop(event, ui){
   console.log('DROPPED');
+  pourring.play();
+  $potion.draggable('disable');
   ui.draggable.remove();
-  buzz.pause();
-  setInterval(pour, 300);
+  $button.click(stir);
 }
 
-function pour(){
-  if($pot.attr('src') === 'assets/images/pot0.png'){
-    $pot.attr('src', 'assets/images/pot1.png');
-    crunch.play();
-  }else{
-    $pot.attr('src', 'assets/images/pot0.png');
+function stir(){
+
+  clickNumber += 1;
+  stirring.play();
+  console.log(clickNumber);
+  $pot.attr(`src`,`assets/images/pot${clickNumber}.png`);
+  console.log(stir);
+  if(clickNumber >= 17){
+    clickNumber = 1;
+    return;
   }
 }
