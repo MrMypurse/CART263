@@ -150,7 +150,8 @@ let animals = [
 
 let correctAnimal;
 let answers = [];
-const NUM_OPTIONS = 4;
+let score = 0;
+const NUM_OPTIONS = 5;
 
 function setup() {
   newRound();
@@ -179,17 +180,19 @@ function handleGuess(){
   if ($(this).text() === correctAnimal) {
     $('.guess').remove();
     setTimeout(newRound, 500);
+    score += 1;
   }else{
-    //$(body).effect('shake');
+    $('.guess').effect('shake');
     sayBackwards(correctAnimal);
+    score = 0;
   }
 }
 
 function sayBackwards(text){
   let backwardsText = text.split('').reverse().join('');
   let options = {
-    pitch: Math.random(0,1),
-    rate: Math.random(0,1)
+    pitch: Math.random(0,2),
+    rate: Math.random(0,2)
   }
-    responsiveVoice.speak(backwardsText, 'Japanese Female','options');
+    responsiveVoice.speak(backwardsText, 'Japanese Female',{options});
 }
