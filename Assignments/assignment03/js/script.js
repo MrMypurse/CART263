@@ -14,12 +14,12 @@ if (annyang){
     'hello': function(){alert('Hello Mortals.');}
   };
   var commands1 = {
-    'I give up': function(){
-      newRound();}
+    'I am a disappointment': function(){
+    gaveUp();}
   };
   var commands2 = {
     'Say it again': function(){
-      sayBackwards(correctAnimal);}
+    sayBackwards(correctAnimal);}
   };
 
   annyang.addCommands(commands);
@@ -224,4 +224,9 @@ function sayBackwards(text){
 
 function updateScore(){
   $('#scoreNumber').text(score);
+}
+
+function gaveUp(){
+  $('correctAnimal').toggle('highlight');
+  setTimeout(newRound(), 2000);
 }
