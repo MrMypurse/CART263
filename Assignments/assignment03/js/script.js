@@ -198,6 +198,9 @@ function sayBackwards(text){
     responsiveVoice.speak(backwardsText, 'Japanese Female',{options});
 }
 
-function updateScore(){
-  $score.text();
+function updateScore(number){
+  let $createScore = $('<p></p>');
+  $createScore.addClass('scoreNumber');
+  $createScore.text(number);
+  $createScore.appendTo('body');
 }
