@@ -17,9 +17,14 @@ if (annyang){
     'I give up': function(){
       newRound();}
   };
+  var commands2 = {
+    'Say it again': function(){
+      sayBackwards(correctAnimal);}
+  };
 
   annyang.addCommands(commands);
   annyang.addCommands(commands1);
+  annyang.addCommands(commands2);
   annyang.start();
 }
 
