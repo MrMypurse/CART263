@@ -9,6 +9,14 @@ This is a template. Fill in the title, author, and this description
 to match your project! Write JavaScript to do amazing things below!
 
 *********************************************************************/
+if (annyang){
+  var commands = {
+    'hello': function(){alert('Hello Mortals.');}
+  };
+
+  annyang.addCommands(commands);
+  annyang.start();
+}
 
 $(document).ready(setup);
 let animals = [
@@ -153,6 +161,7 @@ let answers = [];
 let score = 0;
 const NUM_OPTIONS = 7;
 
+
 function setup() {
   newRound();
 }
@@ -175,18 +184,23 @@ function newRound(){
   }
   correctAnimal = answers[Math.floor(Math.random()* answers.length)];
   sayBackwards(correctAnimal);
+  updateScore();
+
 }
 
 function handleGuess(){
   if ($(this).text() === correctAnimal) {
     $('.guess').remove();
     setTimeout(newRound, 500);
-    score += 1;
+    score ++;
+    updateScore();
   }else{
     $('.guess').effect('shake');
     sayBackwards(correctAnimal);
     score = 0;
+    updateScore();
   }
+  giveUp();
 }
 
 function sayBackwards(text){
@@ -198,9 +212,18 @@ function sayBackwards(text){
     responsiveVoice.speak(backwardsText, 'Japanese Female',{options});
 }
 
-function updateScore(number){
-  let $createScore = $('<p></p>');
-  $createScore.addClass('scoreNumber');
-  $createScore.text(number);
-  $createScore.appendTo('body');
+function updateScore(){
+  $('#scoreNumber').text(score);
+}
+
+function giveUp(){
+  if (annyang){
+    var commands1 = {
+      'I give up': function(){newRound();}
+    };
+
+    annyang.addCommands(commands);
+    annyang.start();
+  }
+  console.log('gaveup');
 }
