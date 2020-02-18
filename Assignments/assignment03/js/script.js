@@ -13,8 +13,13 @@ if (annyang){
   var commands = {
     'hello': function(){alert('Hello Mortals.');}
   };
+  var commands1 = {
+    'I give up': function(){
+      newRound();}
+  };
 
   annyang.addCommands(commands);
+  annyang.addCommands(commands1);
   annyang.start();
 }
 
@@ -176,6 +181,7 @@ function addButton(label){
 }
 
 function newRound(){
+  $('.guess').remove();
   answers = [];
   for (var i = 0; i < NUM_OPTIONS; i++) {
     let chosenAnimals = animals[Math.floor(Math.random()* animals.length)];
@@ -190,7 +196,6 @@ function newRound(){
 
 function handleGuess(){
   if ($(this).text() === correctAnimal) {
-    $('.guess').remove();
     setTimeout(newRound, 500);
     score ++;
     updateScore();
@@ -214,16 +219,4 @@ function sayBackwards(text){
 
 function updateScore(){
   $('#scoreNumber').text(score);
-}
-
-function giveUp(){
-  if (annyang){
-    var commands1 = {
-      'I give up': function(){newRound();}
-    };
-
-    annyang.addCommands(commands);
-    annyang.start();
-  }
-  console.log('gaveup');
 }
