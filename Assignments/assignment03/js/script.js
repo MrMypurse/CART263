@@ -181,11 +181,11 @@ if (annyang) {
       sayBackwards(correctAnimal);
     },
 // guess the answer by saying it
-    'is it *answer': function() {
-      $('answer').val('answer');
+    'I think it is *answer': function(answer) {
       checkAnswer();
     }
   };
+
 //start annyang
   annyang.addCommands(commands);
   annyang.start();
@@ -305,7 +305,7 @@ function checkAnswer()  {
     sayBackwards(correctAnimal);
     score = 0;
     updateScore();
-  }
+  };
 }
 
 //speakInsult()
