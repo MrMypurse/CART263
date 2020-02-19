@@ -168,15 +168,15 @@ if (annyang) {
     'hello': function() {
       alert('Hello, Mortals.');
     },
-    'I am a disappointment': function() {
-      gaveUp();
+    'I give up': function() {
+      giveUp();
     },
     'Say it again': function() {
       sayBackwards(correctAnimal);
     },
-    'I think it is *answer': function(){
+    'I think it is *answer': function() {
       checkAnswer();
-    },
+    }
   };
 
   annyang.addCommands(commands);
@@ -241,10 +241,24 @@ function updateScore() {
 }
 
 function giveUp() {
-  $('correctAnimal').toggle('highlight');
-  setTimeout(newRound(), 2000);
-}
+  $('div').each(function(){
+    if ($(this).text() === correctAnimal) {
+      $(this).effect('shake');
+    };
+  });
+    setTimeout(newRound, 2000);
+    }
+
 
 function checkAnswer(){
-
+  if (answer === correctAnimal){
+    newRound();
+    score += 1;
+    updateScore();
+  }else{
+    $('.guess').effect('shake');
+    sayBackwards(correctAnimal);
+    score = 0;
+    updateScore();
+  }
 }
