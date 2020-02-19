@@ -305,7 +305,7 @@ function checkAnswer()  {
     sayBackwards(correctAnimal);
     score = 0;
     updateScore();
-  };
+  }
 }
 
 //speakInsult()
