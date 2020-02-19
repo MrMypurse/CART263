@@ -153,51 +153,69 @@ let animals = [
 let insults = [
   'You are terrible',
   'stupid',
-  'try harder',
+  'think harder',
   'You are dumb',
 ]
 
+//set up variables
 let correctAnimal;
 let answers = [];
 let answer;
 let score = 0;
+//the game has 7 options
 const NUM_OPTIONS = 7;
 
+//set up annyang voice recongnition
 if (annyang) {
+//test to see if microphone is on
   var commands = {
     'hello': function() {
       alert('Hello, Mortals.');
     },
+//start a new game and insult gamer
     'I give up': function() {
       giveUp();
     },
+// repeat the answer backwards
     'Say it again': function() {
       sayBackwards(correctAnimal);
     },
+// guess the answer by saying it
     'I think it is *answer': function() {
       checkAnswer();
     }
   };
-
+//start annyang
   annyang.addCommands(commands);
   annyang.start();
 }
-
+//make sure that everthing is loaded
 $(document).ready(setup);
 
+//setup()
+//
+//a function to set up the game
 function setup() {
   newRound();
 }
 
+//addButton()
+//
+//a function to add guesses and create buttons for players
+//to click on
 function addButton(label) {
   let $createButton = $('<div></div>');
   $createButton.addClass('guess');
   $createButton.text(label);
   $createButton.button();
   $createButton.appendTo('body');
+// check if the player clicked on the right answer
   $createButton.on('click', handleGuess);
 }
 
+//newRound()
+//
+//a function to restart the game and reset the score
 function newRound() {
   $('.guess').remove();
   answers = [];
@@ -241,24 +259,30 @@ function updateScore() {
 }
 
 function giveUp() {
-  $('div').each(function(){
+  $('div').each(function() {
     if ($(this).text() === correctAnimal) {
       $(this).effect('shake');
     };
   });
-    setTimeout(newRound, 2000);
-    }
+  speakInsult();
+  setTimeout(newRound, 2500);
+}
 
 
-function checkAnswer(){
-  if (answer === correctAnimal){
-    newRound();
-    score += 1;
+function checkAnswer(answer) {
+  if ($(answer).text() === correctAnimal) {
+    score++;
     updateScore();
-  }else{
+    setTimeout(newRound, 500);
+  } else {
     $('.guess').effect('shake');
     sayBackwards(correctAnimal);
     score = 0;
     updateScore();
   }
+}
+
+function speakInsult() {
+  let selectInsult = insults[Math.floor(Math.random() * insults.length)];
+  responsiveVoice.speak(selectInsult, 'Japanese Female');
 }
