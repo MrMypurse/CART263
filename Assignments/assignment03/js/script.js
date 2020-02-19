@@ -168,7 +168,7 @@ const NUM_OPTIONS = 7;
 //set up annyang voice recongnition
 if (annyang) {
 //test to see if microphone is on
-  var commands = {
+  let commands = {
     'hello': function() {
       alert('Hello, Mortals.');
     },
@@ -181,7 +181,7 @@ if (annyang) {
       sayBackwards(correctAnimal);
     },
 // guess the answer by saying it
-    'I think it is *answer': function() {
+    'I think it is *answer': function(answer) {
       checkAnswer();
     }
   };
@@ -259,7 +259,7 @@ function sayBackwards(text) {
   let options = {
     pitch: Math.random(0, 2),
     rate: Math.random(0, 2)
-  }
+  };
 //make the responsive voice speak the backwards answer
   responsiveVoice.speak(backwardsText, 'Japanese Female', {
     options
@@ -292,9 +292,9 @@ function giveUp() {
 //checkAnswer()
 //
 //a function to check whether the player speaks the right answer
-function checkAnswer(answer)  {
+function checkAnswer()  {
 //if right, adjust score and start a new game
-  if ($(this).text() === correctAnimal) {
+  if ($(answer).text() === correctAnimal) {
     setTimeout(newRound, 500);
     score++;
     updateScore();
