@@ -219,23 +219,30 @@ function addButton(label) {
 function newRound() {
   $('.guess').remove();
   answers = [];
+//randomly choose guesses
   for (var i = 0; i < NUM_OPTIONS; i++) {
     let chosenAnimals = animals[Math.floor(Math.random() * animals.length)];
     addButton(chosenAnimals);
     answers.push(chosenAnimals);
   }
+//speak the answer backwards
   correctAnimal = answers[Math.floor(Math.random() * answers.length)];
   sayBackwards(correctAnimal);
   updateScore();
 
 }
 
+//handleGuess()
+//
+//a function to check whether the player clicked on the right answer
 function handleGuess() {
+//if right, adjust score and start a new game
   if ($(this).text() === correctAnimal) {
     setTimeout(newRound, 500);
     score++;
     updateScore();
-  } else {
+// if wrong, shake the guesses and reset score
+} else {
     $('.guess').effect('shake');
     sayBackwards(correctAnimal);
     score = 0;
@@ -243,38 +250,56 @@ function handleGuess() {
   }
 }
 
+//sayBackwards()
+//
+//a function to make the responsive voice speak the right answer backwards
 function sayBackwards(text) {
+//reverse the letters of the answer
   let backwardsText = text.split('').reverse().join('');
   let options = {
     pitch: Math.random(0, 2),
     rate: Math.random(0, 2)
   }
+//make the responsive voice speak the backwards answer
   responsiveVoice.speak(backwardsText, 'Japanese Female', {
     options
   });
 }
 
+//updateScore()
+//
+//a function to display the player's score
 function updateScore() {
   $('#scoreNumber').text(score);
 }
 
+//givUp()
+//
+//a function to harass the player when the player chooses to give up
 function giveUp() {
+//give the right answer by shaking the answer
   $('div').each(function() {
     if ($(this).text() === correctAnimal) {
       $(this).effect('shake');
     };
   });
+//insult the player
   speakInsult();
+//start a new game
   setTimeout(newRound, 2500);
 }
 
-
-function checkAnswer(answer) {
-  if ($(answer).text() === correctAnimal) {
+//checkAnswer()
+//
+//a function to check whether the player speaks the right answer
+function checkAnswer(answer)  {
+//if right, adjust score and start a new game
+  if ($(this).text() === correctAnimal) {
+    setTimeout(newRound, 500);
     score++;
     updateScore();
-    setTimeout(newRound, 500);
-  } else {
+// if wrong, shake the guesses and reset score
+} else {
     $('.guess').effect('shake');
     sayBackwards(correctAnimal);
     score = 0;
@@ -282,6 +307,9 @@ function checkAnswer(answer) {
   }
 }
 
+//speakInsult()
+//
+//a function to destroy player's self-esteem
 function speakInsult() {
   let selectInsult = insults[Math.floor(Math.random() * insults.length)];
   responsiveVoice.speak(selectInsult, 'Japanese Female');
