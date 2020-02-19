@@ -181,7 +181,8 @@ if (annyang) {
       sayBackwards(correctAnimal);
     },
 // guess the answer by saying it
-    'I think it is *answer': function(answer) {
+    'is it *answer': function() {
+      $('answer').val('answer');
       checkAnswer();
     }
   };
