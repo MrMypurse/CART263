@@ -94,16 +94,25 @@ function addDialog() {
   });
 }
 
-
+//addButton()
+//
+//a function to add guesses and create buttons for players
+//to click on
+function addWords(label) {
+  let $createWords = $('<div></div>');
+  $createWords.addClass('words');
+  $createWords.text(label);
+  $createWords.button();
+  $createWords.appendTo('h6');
+}
 function newWords() {
 //randomly choose guesses
   for (var i = 0; i < NUM_OPTIONS; i++) {
     let chosenWords = cursedWords[Math.floor(Math.random() * cursedWords.length)];
+    addWords(chosenWords);
     shownWords.push(chosenWords);
     console.log(chosenWords);
   };
-  //$('shownWords').text();
-  $('#wordList').append(shownWords);
 }
 
 //updateScore()
