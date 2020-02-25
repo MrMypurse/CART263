@@ -9,7 +9,7 @@ This is a template. Fill in the title, author, and this description
 to match your project! Write JavaScript to do amazing things below!
 
 *********************************************************************/
-const NUM_OPTIONS = 5;
+const NUM_OPTIONS = 7;
 let question = 'YOU MUST BE UNDER 18 TO ENTER THIS SITE';
 let coins = 100;
 let shownWords = [];
@@ -100,10 +100,12 @@ function newWords() {
   for (var i = 0; i < NUM_OPTIONS; i++) {
     let chosenWords = cursedWords[Math.floor(Math.random() * cursedWords.length)];
     shownWords.push(chosenWords);
+    console.log(chosenWords);
   };
-  $('shownWords').text();
-  $('shownWords').appendTo('h3');
+  //$('shownWords').text();
+  $('#wordList').append(shownWords);
 }
+
 //updateScore()
 //
 //a function to display the player's score
