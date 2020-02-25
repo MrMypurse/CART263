@@ -104,7 +104,9 @@ function addWords(label) {
   $createWords.text(label);
   $createWords.button();
   $createWords.appendTo('h6');
+  $createWords.click(speakWords);
 }
+
 function newWords() {
 //randomly choose guesses
   for (var i = 0; i < NUM_OPTIONS; i++) {
@@ -115,7 +117,11 @@ function newWords() {
   };
 }
 
-//updateScore()
+function speakWords(text) {
+    responsiveVoice.speak(shownWords, 'UK English Female');
+}
+
+//updateCoins()
 //
 //a function to display the player's score
 function updateCoins() {
