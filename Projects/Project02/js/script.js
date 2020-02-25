@@ -2,17 +2,25 @@
 
 /********************************************************************
 
-Title of Project
-Author Name
+COINS N TOYS
+Program: Janet Sun
+Template: w3schools
 
-This is a template. Fill in the title, author, and this description
-to match your project! Write JavaScript to do amazing things below!
-
+Having trouble making money from children?
+This is the perfect website to brain wash your underage consummers!
+Introduce COINS N TOYS:A small shopping simulation to hook'em kids on
+these toys. Just a few minutes a day on this website and they will give
+ you all their cash in no time!
 *********************************************************************/
+//define number of generated words
 const NUM_OPTIONS = 7;
+//dialog question when the website opens
 let question = 'YOU MUST BE UNDER 18 TO ENTER THIS SITE';
+//the number of initial coins
 let coins = 100;
+//array for generated words
 let shownWords = [];
+//array of cursed words to generate from
 let cursedWords = [
   'buy',
   'give me your credit card',
@@ -50,9 +58,12 @@ let cursedWords = [
   'i love toys',
 ];
 
-
+//load EVERYTHING
 $(document).ready(setup);
 
+//setup()
+//
+//a function to set up website and call important functions
 function setup() {
   addDialog();
   updateCoins();
@@ -61,17 +72,17 @@ function setup() {
 
 // addDialog()
 //
-// The key function. It adds a stupid dialog to a random position
-// on the screen.
+//a function to add a stupid question to the middle of the screen.
 function addDialog() {
-
-  // Dynamically create a div and store it in a variable. This is the div
-  // we will turn into a dialog box. Set its title at the same time.
+  // Dynamically create a div and store it in a variable.
+  //Set its title at the same time.
   let $dialog = $(`<div></div>`).attr(`title`, `PLEASE VERIFY YOUR AGE`);
   // Add a p tag to the dialog div that contains the question text
   $dialog.append(`<p>${question}</p>`);
   //add the div to the page
   $('body').append($dialog);
+  //if "yes" is clicked, use is allowed into the webiste;
+  //if "no" is clicked, nothing changes but user is not allowed to use the site
   $dialog.dialog({
     autoOpen: true,
     modal: true,
@@ -108,7 +119,7 @@ function addWords(label) {
 }
 
 function newWords() {
-//randomly choose guesses
+  //randomly choose guesses
   for (var i = 0; i < NUM_OPTIONS; i++) {
     let chosenWords = cursedWords[Math.floor(Math.random() * cursedWords.length)];
     addWords(chosenWords);
@@ -118,7 +129,7 @@ function newWords() {
 }
 
 function speakWords(text) {
-    responsiveVoice.speak(shownWords, 'UK English Female');
+  responsiveVoice.speak(shownWords, 'UK English Female');
 }
 
 //updateCoins()
