@@ -9,16 +9,25 @@ h6 {
 
 }
 
+h3 {
+  padding: 20px;
+  background-color: #e7ff30;
+  margin: 0;
+}
 
 h6 {
-  align-items: center;
-  border: 20px;
+  align-items: left;
   text-align: center;
   display: flex;
   flex-direction: column;
 }
+
+.w3-row {
+  margin-left: 50px;
+}
 .w3-third img {
   margin-bottom: -6px;
+
   opacity: 0.8;
   cursor: pointer;
   opacity: 1;
@@ -31,4 +40,9 @@ h6 {
 
 .no-close .ui-dialog-titlebar-close {
   display: none;
+}
+
+#refreshButton {
+  border: none;
+  border-radius: 2px;
 }

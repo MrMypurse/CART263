@@ -5,8 +5,10 @@ Template: w3schools
 COIN N TOYS is an interactive website in the purpose of mocking Youtubers/
 influencers on the Internet today who spam contents targeting children to
 generate revenue. The goal of the website is to "brain wash" children and
-pre-teens enough that they will buy everything that's on their screen. To
-use the website, the user must repeat after the words on the screen to
+pre-teens enough that they will buy everything that's on their screen.
+When the user first enter the website, they will need to verify that they
+are under 18. If the user is not underage, they cannot use the website.
+To use the website, the user must repeat after the words on the screen to
 generate "coins". When the user has enough "coins", he/she can purchase
 toys on the webpage. Such repetitive action should influence a child's
 unconsciousness and their decisions when they see toys that they want online.

@@ -13,7 +13,7 @@ these toys. Just a few minutes a day on this website and they will give
  you all their cash in no time!
 *********************************************************************/
 //define number of generated words
-const NUM_OPTIONS = 7;
+const NUM_OPTIONS = 10;
 //dialog question when the website opens
 let question = 'YOU MUST BE UNDER 18 TO ENTER THIS SITE';
 //the number of initial coins
