@@ -7,7 +7,7 @@ Program: Janet Sun
 Template: w3schools
 
 Having trouble making money from children?
-This is the perfect website to brain wash your underage consummers!
+This is the perfect website to brain wash your underage consumers!
 Introduce COINS N TOYS:A small shopping simulation to hook'em kids on
 these toys. Just a few minutes a day on this website and they will give
  you all their cash in no time!
@@ -105,9 +105,9 @@ function addDialog() {
   });
 }
 
-//addButton()
+//addWords()
 //
-//a function to add guesses and create buttons for players
+//a function to add randomly generated words and create buttons for users
 //to click on
 function addWords(label) {
   let $createWords = $('<div></div>');
@@ -115,9 +115,13 @@ function addWords(label) {
   $createWords.text(label);
   $createWords.button();
   $createWords.appendTo('h6');
+  //speak the button when it is clicked
   $createWords.click(speakWords);
 }
 
+//newWords()
+//
+// a function to generate words from an array using math
 function newWords() {
   //randomly choose guesses
   for (var i = 0; i < NUM_OPTIONS; i++) {
@@ -128,13 +132,13 @@ function newWords() {
   };
 }
 
-function speakWords(text) {
+function speakWords() {
   responsiveVoice.speak(shownWords, 'UK English Female');
 }
 
 //updateCoins()
 //
-//a function to display the player's score
+//a function to display the user's coins
 function updateCoins() {
   $('#coinNumber').text(coins);
 }
