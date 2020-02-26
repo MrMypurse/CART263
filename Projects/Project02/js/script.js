@@ -95,12 +95,7 @@ function addDialog() {
         $(this).dialog(`close`);
       },
       "NO": function() {
-        $(this).dialog({
-          show: {
-            effect: 'shake',
-            duration: 800
-          }
-        })
+        $(this).effect(`shake`);
       }
     },
     // contained within the body tag, and can't be dragged out of it.
@@ -122,7 +117,7 @@ function poorDialog() {
   //if "yes" is clicked, use is allowed into the webiste;
   //if "no" is clicked, nothing changes but user is not allowed to use the site
   $dialog2.dialog({
-    autoOpen: false,
+    autoOpen: true,
     modal: true,
     dialogClass: 'no-close',
     buttons: {
@@ -130,12 +125,7 @@ function poorDialog() {
         $(this).dialog(`close`);
       },
       "NO, I LOVE BEING POOR": function() {
-        $(this).dialog({
-          show: {
-            effect: 'shake',
-            duration: 800
-          }
-        })
+        $(this).effect(`shake`);
       }
     },
     // contained within the body tag, and can't be dragged out of it.
@@ -180,6 +170,10 @@ function speakWords() {
 //a function to display the user's coins
 function updateCoins() {
   $('#coinNumber').text(coins);
+  if (coins <= 0) {
+    coins = 0;
+    poorDialog();
+  }
 }
 
 function refreshWords() {
@@ -191,9 +185,6 @@ function clickBuy() {
   let $images = $('.w3-third');
   $images.click(function() {
     coins = coins - 40.2;
-    if (coins <= 0) {
-      poorDialog();
-    }
     updateCoins();
   })
 }
