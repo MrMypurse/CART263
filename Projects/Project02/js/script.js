@@ -16,28 +16,29 @@ these toys. Just a few minutes a day on this website and they will give
 const NUM_OPTIONS = 10;
 //dialog question when the website opens
 let question = 'YOU MUST BE UNDER 18 TO ENTER THIS SITE';
+let warning = 'YOU DO NOT HAVE ENOUGH COINS! PLEASE FOLLOW INSTRUCTION TO GENERATE COINS';
 //the number of initial coins
-let coins = 100;
+let coins = 50;
 //array for generated words
 let shownWords = [];
 //array of cursed words to generate from
 let cursedWords = [
-  'buy',
+  'buy video games',
   'give me your credit card',
-  'merch',
-  'toys',
+  'buy merch',
+  'new toys',
   'buy toys',
   'subscribe',
   'like',
   'buy the toy',
   'youtube',
-  'money',
+  'give money',
   'i want money',
   'i want the toy',
   'i need money',
   'buy the merch',
   'purchase',
-  'cash',
+  'give cash',
   'debit card',
   'credit card',
   'american express',
@@ -48,9 +49,9 @@ let cursedWords = [
   'internet',
   'toy review',
   'views',
-  'play',
+  'play games',
   'toys for kids',
-  'fun',
+  'i am having fun',
   'capitalism is good',
   'spending money is good',
   'i love capitalism',
@@ -69,6 +70,7 @@ function setup() {
   updateCoins();
   newWords();
   refreshWords();
+  clickBuy();
 }
 
 // addDialog()
@@ -93,6 +95,41 @@ function addDialog() {
         $(this).dialog(`close`);
       },
       "NO": function() {
+        $(this).dialog({
+          show: {
+            effect: 'shake',
+            duration: 800
+          }
+        })
+      }
+    },
+    // contained within the body tag, and can't be dragged out of it.
+    containment: 'body'
+  });
+}
+
+// poorDialog()
+//
+//a function to add a stupid question to the middle of the screen.
+function poorDialog() {
+  // Dynamically create a div and store it in a variable.
+  //Set its title at the same time.
+  let $dialog2 = $(`<div></div>`).attr(`title`, `WARNING`);
+  // Add a p tag to the dialog div that contains the question text
+  $dialog2.append(`<p>${warning}</p>`);
+  //add the div to the page
+  $('body').append($dialog2);
+  //if "yes" is clicked, use is allowed into the webiste;
+  //if "no" is clicked, nothing changes but user is not allowed to use the site
+  $dialog2.dialog({
+    autoOpen: false,
+    modal: true,
+    dialogClass: 'no-close',
+    buttons: {
+      "YES, I WILL FOLLOW": function() {
+        $(this).dialog(`close`);
+      },
+      "NO, I LOVE BEING POOR": function() {
         $(this).dialog({
           show: {
             effect: 'shake',
@@ -145,7 +182,18 @@ function updateCoins() {
   $('#coinNumber').text(coins);
 }
 
-function refreshWords(){
+function refreshWords() {
   let $refreshButton = $('#refreshButton');
   $refreshButton.click(newWords);
+}
+
+function clickBuy() {
+  let $images = $('.w3-third');
+  $images.click(function() {
+    coins = coins - 40.2;
+    if (coins <= 0) {
+      poorDialog();
+    }
+    updateCoins();
+  })
 }

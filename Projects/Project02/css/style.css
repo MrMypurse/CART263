@@ -5,18 +5,19 @@ h3,
 h4,
 h5,
 h6 {
+  color: #f28f72;
   font-family: "Raleway", sans-serif;
 
 }
 
 h3 {
-  border: 2px solid #ffc3b5;
-  padding: 20px;
-  background-color: #ffff54;
+  padding: 14px;
+  background-color: #f9f683;
+  margin: 0;
 }
 
 h6 {
-  background-color: #ffc3b5;
+  background-color: #f9f683;
   align-items: left;
   text-align: center;
   display: flex;
@@ -25,6 +26,8 @@ h6 {
 }
 
 .w3-row {
+  color: #f28f72;
+  font-size: 16px;
   margin-left: 50px;
 }
 
@@ -46,8 +49,8 @@ h6 {
 }
 
 #refreshButton {
-  background-color: #78ff8a;
-  border: 5px solid #ffc3b5;
+  background-color: #53c6c3;
+  border: 10px solid #f28f72;
   border-radius: 5px;
   padding: 10px 24px;
 }
