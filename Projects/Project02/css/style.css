@@ -10,21 +10,24 @@ h6 {
 }
 
 h3 {
+  border: 2px solid #ffc3b5;
   padding: 20px;
-  background-color: #e7ff30;
-  margin: 0;
+  background-color: #ffff54;
 }
 
 h6 {
+  background-color: #ffc3b5;
   align-items: left;
   text-align: center;
   display: flex;
   flex-direction: column;
+  margin: 0;
 }
 
 .w3-row {
   margin-left: 50px;
 }
+
 .w3-third img {
   margin-bottom: -6px;
 
@@ -43,6 +46,8 @@ h6 {
 }
 
 #refreshButton {
-  border: none;
-  border-radius: 2px;
+  background-color: #78ff8a;
+  border: 5px solid #ffc3b5;
+  border-radius: 5px;
+  padding: 10px 24px;
 }

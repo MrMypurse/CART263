@@ -68,6 +68,7 @@ function setup() {
   addDialog();
   updateCoins();
   newWords();
+  refreshWords();
 }
 
 // addDialog()
@@ -123,6 +124,7 @@ function addWords(label) {
 //
 // a function to generate words from an array using math
 function newWords() {
+  $('.words').remove();
   //randomly choose guesses
   for (var i = 0; i < NUM_OPTIONS; i++) {
     let chosenWords = cursedWords[Math.floor(Math.random() * cursedWords.length)];
@@ -141,4 +143,9 @@ function speakWords() {
 //a function to display the user's coins
 function updateCoins() {
   $('#coinNumber').text(coins);
+}
+
+function refreshWords(){
+  let $refreshButton = $('#refreshButton');
+  $refreshButton.click(newWords);
 }
