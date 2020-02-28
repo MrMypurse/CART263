@@ -162,7 +162,7 @@ function newWords() {
 }
 
 function speakWords() {
-  responsiveVoice.speak(shownWords, 'UK English Female');
+  responsiveVoice.speak($(this).text(), 'UK English Female');
 }
 
 //updateCoins()
