@@ -169,11 +169,8 @@ function speakWords() {
 //
 //a function to display the user's coins
 function updateCoins() {
+  coins.toFixed(2);
   $('#coinNumber').text(coins);
-  if (coins <= 0) {
-    coins = 0;
-    poorDialog();
-  }
 }
 
 function refreshWords() {
@@ -184,7 +181,12 @@ function refreshWords() {
 function clickBuy() {
   let $images = $('.w3-third');
   $images.click(function() {
-    coins = coins - 40.2;
-    updateCoins();
+    if (coins <= 40.2) {
+      poorDialog();
+    }else {
+      coins =coins - 40.2;
+      updateCoins();
+    }
+
   })
 }
