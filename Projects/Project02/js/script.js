@@ -72,24 +72,29 @@ function setup() {
   refreshWords();
   clickBuy();
 
-  if (annyang){
+  //setup AnnYang voie command
+  if (annyang) {
     var command = {
+      //call handleSpeech function after words are detected
       "*spokenWord": handleSpeech
     };
   }
   annyang.addCommands(command);
   annyang.start();
-
 }
 
-function handleSpeech(word){
+//handleSpeech(word)
+//
+//a function to check if the word that the user says is correct
+//if it is correct, add 2 coins
+function handleSpeech(word) {
   console.log(word);
-  if (shownWords.includes(word)){
+  if (shownWords.includes(word)) {
     coins = coins + 2;
     updateCoins();
   }
-
 }
+
 // addDialog()
 //
 //a function to add a stupid question to the middle of the screen.
@@ -131,7 +136,7 @@ function poorDialog() {
   $dialog2.append(`<p>${warning}</p>`);
   //add the div to the page
   $('body').append($dialog2);
-  //if "yes" is clicked, use is allowed into the webiste;
+  //if "yes" is clicked, use is allowed back into the webiste;
   //if "no" is clicked, nothing changes but user is not allowed to use the site
   $dialog2.dialog({
     autoOpen: true,
@@ -177,6 +182,9 @@ function newWords() {
   };
 }
 
+//speakWords()
+//
+//a function to call responsiveVoice to speak the words that the user clicked on
 function speakWords() {
   responsiveVoice.speak($(this).text(), 'UK English Female');
 }
@@ -189,20 +197,26 @@ function updateCoins() {
   $('#coinNumber').text(coins);
 }
 
+//refreshWords()
+//
+//a function to generate new words when a button is clicked
 function refreshWords() {
   let $refreshButton = $('#refreshButton');
   $refreshButton.click(newWords);
 }
 
+//clickBuy()
+//
+//a function to decrease the user's coins when a product image is clicked on
 function clickBuy() {
   let $images = $('.w3-third');
   $images.click(function() {
+    // call the dialog when the number of coins is insufficient to buy anything
     if (coins <= 40.20) {
       poorDialog();
-    }else {
+    } else {
       coins = coins - 40.20;
       updateCoins();
     }
-
   })
 }
