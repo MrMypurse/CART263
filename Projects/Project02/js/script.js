@@ -71,8 +71,25 @@ function setup() {
   newWords();
   refreshWords();
   clickBuy();
+
+  if (annyang){
+    var command = {
+      "*spokenWord": handleSpeech
+    };
+  }
+  annyang.addCommands(command);
+  annyang.start();
+
 }
 
+function handleSpeech(word){
+  console.log(word);
+  if (shownWords.includes(word)){
+    coins = coins + 2;
+    updateCoins();
+  }
+
+}
 // addDialog()
 //
 //a function to add a stupid question to the middle of the screen.
@@ -157,7 +174,6 @@ function newWords() {
     let chosenWords = cursedWords[Math.floor(Math.random() * cursedWords.length)];
     addWords(chosenWords);
     shownWords.push(chosenWords);
-    console.log(chosenWords);
   };
 }
 
@@ -169,7 +185,7 @@ function speakWords() {
 //
 //a function to display the user's coins
 function updateCoins() {
-  coins.toFixed(2);
+  (coins).toFixed(2);
   $('#coinNumber').text(coins);
 }
 
@@ -181,10 +197,10 @@ function refreshWords() {
 function clickBuy() {
   let $images = $('.w3-third');
   $images.click(function() {
-    if (coins <= 40.2) {
+    if (coins <= 40.20) {
       poorDialog();
     }else {
-      coins =coins - 40.2;
+      coins = coins - 40.20;
       updateCoins();
     }
 
