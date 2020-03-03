@@ -16,7 +16,7 @@ these toys. Just a few minutes a day on this website and they will give
 const NUM_OPTIONS = 10;
 //dialog question when the website opens
 let question = 'YOU MUST BE UNDER 18 TO ENTER THIS SITE';
-let warning = 'YOU DO NOT HAVE ENOUGH COINS! PLEASE FOLLOW INSTRUCTION TO GENERATE COINS';
+let warning = 'YOU DO NOT HAVE ENOUGH COINS!PLEASE FOLLOW INSTRUCTION TO GENERATE COINS OR INSERT YOUR PARENTS CREDIT CARD.';
 //the number of initial coins
 let coins = 50;
 //array for generated words
@@ -193,7 +193,7 @@ function speakWords() {
 //
 //a function to display the user's coins
 function updateCoins() {
-  (coins).toFixed(2);
+  coins = coins.toFixed(2);
   $('#coinNumber').text(coins);
 }
 

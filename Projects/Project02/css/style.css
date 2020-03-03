@@ -5,19 +5,23 @@ h3,
 h4,
 h5,
 h6 {
-  color: #f28f72;
+  color: #ffaf00;
   font-family: "Raleway", sans-serif;
+}
 
+body {
+  background-color: #00ace7;
 }
 
 h3 {
+  color: #00ace7;
   padding: 14px;
-  background-color: #f9f683;
+  background-color: #ffaf00;
   margin: 0;
 }
 
 h6 {
-  background-color: #f9f683;
+  background-color: #ffaf00;
   align-items: left;
   text-align: center;
   display: flex;
@@ -25,15 +29,21 @@ h6 {
   margin: 0;
 }
 
+.hoverButton {
+  display: none;
+}
+
+.hoverButton: hover{
+  display: inline-block;
+}
+
 .w3-row {
-  color: #f28f72;
   font-size: 16px;
-  margin-left: 50px;
+  margin-left: 200px;
 }
 
 .w3-third img {
   margin-bottom: -6px;
-
   opacity: 0.8;
   cursor: pointer;
   opacity: 1;
@@ -41,7 +51,6 @@ h6 {
 
 .w3-third img:hover {
   opacity: 0.5;
-
 }
 
 .no-close .ui-dialog-titlebar-close {
@@ -49,8 +58,9 @@ h6 {
 }
 
 #refreshButton {
-  background-color: #53c6c3;
-  border: 10px solid #f28f72;
+  color: #ff110f;
+  background-color: #84c400;
+  border: 10px solid #00ace7;
   border-radius: 5px;
   padding: 10px 24px;
 }
