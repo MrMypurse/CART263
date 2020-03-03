@@ -114,10 +114,12 @@ function addDialog() {
     modal: true,
     dialogClass: 'no-close',
     buttons: {
-      "YES, I AM UNDER 18": function() {
+      "YES, I AM UNDER 18":
+      function() {
         $(this).dialog(`close`);
       },
-      "NO": function() {
+      "NO":
+      function() {
         $(this).effect(`shake`);
       }
     },
@@ -144,10 +146,12 @@ function poorDialog() {
     modal: true,
     dialogClass: 'no-close',
     buttons: {
-      "YES, I WILL FOLLOW": function() {
+      "YES, I WILL FOLLOW":
+      function() {
         $(this).dialog(`close`);
       },
-      "NO, I LOVE BEING POOR": function() {
+      "NO, I LOVE BEING POOR":
+      function() {
         $(this).effect(`shake`);
       }
     },
@@ -188,7 +192,8 @@ function newWords() {
 //a function to call responsiveVoice to speak the words that the user clicked on
 function speakWords() {
   responsiveVoice.speak($(this).text(), 'UK English Female', {
-    pitch: 5
+    pitch: 3,
+    speed: 0.5,
   });
 }
 
@@ -212,7 +217,7 @@ function refreshWords() {
 //
 //a function to decrease the user's coins when a product image is clicked on
 function clickBuy() {
-  let $images = $('.w3-third');
+  let $images = $('.toyImages');
   $images.click(
     function() {
       // call the dialog when the number of coins is insufficient to buy anything
@@ -225,18 +230,18 @@ function clickBuy() {
     })
 }
 
+//hoverBuy
+//
+//a function to lure users to buy the product when they hover over the image
 function hoverBuy() {
-  $images.hover(
+  $('.toyImages').hover(
     function() {
-      $(this).append($('<span> BUY ME </span>'));
+      $("#hoverButton").show();
+      let position = $(this).position();
+      $('#hoverButton').css('top', position.top);
+      $('#hoverButton').css('left', position.left);
     },
     function() {
-      $(this).find('span').last().remove();
-    }
-  );
-  $(images.fade).hover(
-    function() {
-      $(this).fadeOut(100);
-      $(this).fadeIn(50);
+      $('#hoverButton').hide();
     });
 }
