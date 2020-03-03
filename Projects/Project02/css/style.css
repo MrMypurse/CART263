@@ -33,7 +33,7 @@ h6 {
   display: none;
 }
 
-.w3-third img:hover .hoverButton {
+.w3-third img:hover .hoverButton{
   display: inline-flex;
 }
 
@@ -44,6 +44,7 @@ h6 {
 
 .w3-third img {
   margin-bottom: -6px;
+  opacity: 0.8;
   cursor: pointer;
   opacity: 1;
 }
