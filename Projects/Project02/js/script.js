@@ -201,8 +201,8 @@ function speakWords() {
 //
 //a function to display the user's coins
 function updateCoins() {
-  coins = coins.toFixed(2);
-  $('#coinNumber').text(coins);
+  let roundedCoins = coins.toFixed(2);
+  $('#coinNumber').text(roundedCoins);
 }
 
 //refreshWords()
@@ -223,6 +223,7 @@ function clickBuy() {
       // call the dialog when the number of coins is insufficient to buy anything
       if (coins <= 40.20) {
         poorDialog();
+        $('.modalWindow').removeAttr("modal:open");
       } else {
         coins = coins - 40.20;
         updateCoins();
