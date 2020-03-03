@@ -34,7 +34,7 @@ h6 {
 }
 
 .w3-third img:hover .hoverButton{
-  display: inline-flex;
+  display: block;
 }
 
 .w3-row {
@@ -63,4 +63,8 @@ h6 {
   border: 10px solid #00ace7;
   border-radius: 5px;
   padding: 10px 24px;
+}
+
+.modal{
+  background-color: black;
 }

@@ -71,6 +71,7 @@ function setup() {
   newWords();
   refreshWords();
   clickBuy();
+  hoverBuy();
 
   //setup AnnYang voie command
   if (annyang) {
@@ -186,7 +187,9 @@ function newWords() {
 //
 //a function to call responsiveVoice to speak the words that the user clicked on
 function speakWords() {
-  responsiveVoice.speak($(this).text(), 'UK English Female');
+  responsiveVoice.speak($(this).text(), 'UK English Female', {
+    pitch: 5
+  });
 }
 
 //updateCoins()
@@ -210,13 +213,30 @@ function refreshWords() {
 //a function to decrease the user's coins when a product image is clicked on
 function clickBuy() {
   let $images = $('.w3-third');
-  $images.click(function() {
-    // call the dialog when the number of coins is insufficient to buy anything
-    if (coins <= 40.20) {
-      poorDialog();
-    } else {
-      coins = coins - 40.20;
-      updateCoins();
+  $images.click(
+    function() {
+      // call the dialog when the number of coins is insufficient to buy anything
+      if (coins <= 40.20) {
+        poorDialog();
+      } else {
+        coins = coins - 40.20;
+        updateCoins();
+      }
+    })
+}
+
+function hoverBuy() {
+  $images.hover(
+    function() {
+      $(this).append($('<span> BUY ME </span>'));
+    },
+    function() {
+      $(this).find('span').last().remove();
     }
-  })
+  );
+  $(images.fade).hover(
+    function() {
+      $(this).fadeOut(100);
+      $(this).fadeIn(50);
+    });
 }
