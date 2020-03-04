@@ -46,7 +46,7 @@ let cursedWords = [
   'credit card',
   'american express',
   'visa card',
-  'master card',
+  'MasterCard',
   'dollars',
   'coins',
   'internet',
@@ -71,13 +71,13 @@ $(document).ready(setup);
 //
 //a function to set up website and call important functions
 function setup() {
+  clickSound();
   addDialog();
   updateCoins();
   newWords();
   refreshWords();
   clickBuy();
   hoverBuy();
-  clickSound();
 
   //setup AnnYang voie command
   if (annyang) {
