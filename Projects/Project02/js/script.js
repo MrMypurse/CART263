@@ -14,6 +14,8 @@ these toys. Just a few minutes a day on this website and they will give
 *********************************************************************/
 //define number of generated words
 const NUM_OPTIONS = 10;
+let pngStr;
+let gifStr;
 //dialog question when the website opens
 let question = 'YOU MUST BE UNDER 18 TO ENTER THIS SITE';
 let warning = 'YOU DO NOT HAVE ENOUGH COINS!PLEASE FOLLOW INSTRUCTION TO GENERATE COINS OR INSERT YOUR PARENTS CREDIT CARD.';
@@ -160,6 +162,18 @@ function poorDialog() {
   });
 }
 
+function imageDialog() {
+  let $dialog3 = $('<div></div>').attr(`title`, ``);
+  $dialog3.append("<img src='"+ gifStr + "'></img>");
+  $('body').append($dialog3);
+  $dialog3.dialog({
+    autoOpen: true,
+    modal: true,
+    containment: 'body'
+  });
+}
+
+
 //addWords()
 //
 //a function to add randomly generated words and create buttons for users
@@ -192,8 +206,8 @@ function newWords() {
 //a function to call responsiveVoice to speak the words that the user clicked on
 function speakWords() {
   responsiveVoice.speak($(this).text(), 'UK English Female', {
-    pitch: 3,
-    speed: 0.5,
+    pitch: 0.2,
+    speed: 0.1,
   });
 }
 
@@ -219,18 +233,26 @@ function refreshWords() {
 function clickBuy() {
   let $images = $('.toyImages');
   $images.click(
+
     function() {
       // call the dialog when the number of coins is insufficient to buy anything
       if (coins <= 40.20) {
         poorDialog();
-        $('.modalWindow').removeAttr("modal:open");
       } else {
+        pngStr = $(this).attr('src');
+        console.log(pngStr);
         coins = coins - 40.20;
+        switchFormat();
+        imageDialog();
         updateCoins();
       }
     })
 }
 
+function switchFormat() {
+  gifStr = pngStr.replace('png','gif');
+  console.log(gifStr);
+}
 //hoverBuy
 //
 //a function to lure users to buy the product when they hover over the image
