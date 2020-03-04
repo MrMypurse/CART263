@@ -60,6 +60,7 @@ let cursedWords = [
   'I love buying toys',
   'I love toys',
 ];
+const click = new Audio('assets/sounds/click.wav');
 
 //load EVERYTHING
 $(document).ready(setup);
@@ -74,6 +75,7 @@ function setup() {
   refreshWords();
   clickBuy();
   hoverBuy();
+  clickSound();
 
   //setup AnnYang voie command
   if (annyang) {
@@ -185,6 +187,7 @@ function addWords(label) {
   $createWords.button();
   $createWords.appendTo('h6');
   //speak the button when it is clicked
+
   $createWords.click(speakWords);
 }
 
@@ -233,7 +236,6 @@ function refreshWords() {
 function clickBuy() {
   let $images = $('.toyImages');
   $images.click(
-
     function() {
       // call the dialog when the number of coins is insufficient to buy anything
       if (coins <= 40.20) {
@@ -253,6 +255,7 @@ function switchFormat() {
   gifStr = pngStr.replace('png','gif');
   console.log(gifStr);
 }
+
 //hoverBuy
 //
 //a function to lure users to buy the product when they hover over the image
@@ -267,4 +270,11 @@ function hoverBuy() {
     function() {
       $('#hoverButton').hide();
     });
+}
+
+function clickSound(){
+  $('body').click(function(){
+        click.play();
+  })
+
 }
