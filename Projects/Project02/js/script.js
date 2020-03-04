@@ -1,10 +1,11 @@
 "use strict";
 
 /********************************************************************
-
 COINS N TOYS
-Program: Janet Sun
+
+Coding: Janet Sun
 Template: w3schools
+Images: Giphy
 
 Having trouble making money from children?
 This is the perfect website to brain wash your underage consumers!
@@ -60,6 +61,7 @@ let cursedWords = [
   'I love buying toys',
   'I love toys',
 ];
+//sound effect
 const click = new Audio('assets/sounds/click.wav');
 
 //load EVERYTHING
@@ -102,7 +104,7 @@ function handleSpeech(word) {
 
 // addDialog()
 //
-//a function to add a stupid question to the middle of the screen.
+//a function to add a dumb question to the middle of the screen.
 function addDialog() {
   // Dynamically create a div and store it in a variable.
   //Set its title at the same time.
@@ -118,12 +120,10 @@ function addDialog() {
     modal: true,
     dialogClass: 'no-close',
     buttons: {
-      "YES, I AM UNDER 18":
-      function() {
+      "YES, I AM UNDER 18": function() {
         $(this).dialog(`close`);
       },
-      "NO":
-      function() {
+      "NO": function() {
         $(this).effect(`shake`);
       }
     },
@@ -134,7 +134,7 @@ function addDialog() {
 
 // poorDialog()
 //
-//a function to add a stupid question to the middle of the screen.
+//a function to add an insulting dialog to the middle of the screen.
 function poorDialog() {
   // Dynamically create a div and store it in a variable.
   //Set its title at the same time.
@@ -150,12 +150,10 @@ function poorDialog() {
     modal: true,
     dialogClass: 'no-close',
     buttons: {
-      "YES, I WILL FOLLOW":
-      function() {
+      "YES, I WILL FOLLOW": function() {
         $(this).dialog(`close`);
       },
-      "NO, I LOVE BEING POOR":
-      function() {
+      "NO, I LOVE BEING POOR": function() {
         $(this).effect(`shake`);
       }
     },
@@ -164,17 +162,25 @@ function poorDialog() {
   });
 }
 
+//imageDialog()
+//
+//a function to display dialogs containing gif images
 function imageDialog() {
+  // Dynamically create a div and store it in a variable.
   let $dialog3 = $('<div></div>').attr(`title`, ``);
-  $dialog3.append("<img src='"+ gifStr + "'></img>");
+  //use image source to append gif image
+  $dialog3.append("<img src='" + gifStr + "'></img>");
+  //add the div to the page
   $('body').append($dialog3);
   $dialog3.dialog({
     autoOpen: true,
     modal: true,
+    height: 500,
+    width: 600,
+    // contained within the body tag, and can't be dragged out of it.
     containment: 'body'
   });
 }
-
 
 //addWords()
 //
@@ -186,8 +192,7 @@ function addWords(label) {
   $createWords.text(label);
   $createWords.button();
   $createWords.appendTo('h6');
-  //speak the button when it is clicked
-
+  //speak the words on the button when it is clicked
   $createWords.click(speakWords);
 }
 
@@ -204,6 +209,14 @@ function newWords() {
   };
 }
 
+//refreshWords()
+//
+//a function to generate new words when a button is clicked
+function refreshWords() {
+  let $refreshButton = $('#refreshButton');
+  $refreshButton.click(newWords);
+}
+
 //speakWords()
 //
 //a function to call responsiveVoice to speak the words that the user clicked on
@@ -212,22 +225,6 @@ function speakWords() {
     pitch: 0.2,
     speed: 0.1,
   });
-}
-
-//updateCoins()
-//
-//a function to display the user's coins
-function updateCoins() {
-  let roundedCoins = coins.toFixed(2);
-  $('#coinNumber').text(roundedCoins);
-}
-
-//refreshWords()
-//
-//a function to generate new words when a button is clicked
-function refreshWords() {
-  let $refreshButton = $('#refreshButton');
-  $refreshButton.click(newWords);
 }
 
 //clickBuy()
@@ -241,19 +238,18 @@ function clickBuy() {
       if (coins <= 40.20) {
         poorDialog();
       } else {
+        //store the image source in a variable for converting to gif later
         pngStr = $(this).attr('src');
         console.log(pngStr);
+        //decrease the user's coin when making a purchase
         coins = coins - 40.20;
+        //convert image source from png to gif
         switchFormat();
+        //show gif image in a dialog
         imageDialog();
         updateCoins();
       }
     })
-}
-
-function switchFormat() {
-  gifStr = pngStr.replace('png','gif');
-  console.log(gifStr);
 }
 
 //hoverBuy
@@ -262,19 +258,41 @@ function switchFormat() {
 function hoverBuy() {
   $('.toyImages').hover(
     function() {
+      //use image position to assign hovered text position
       $("#hoverButton").show();
       let position = $(this).position();
       $('#hoverButton').css('top', position.top);
       $('#hoverButton').css('left', position.left);
     },
+    //hide the hovered text when the image is not hovered
     function() {
       $('#hoverButton').hide();
     });
 }
 
-function clickSound(){
-  $('body').click(function(){
-        click.play();
-  })
+//updateCoins()
+//
+//a function to display the user's coins
+function updateCoins() {
+  //limit the coin's number to 2 digits after comma
+  let roundedCoins = coins.toFixed(2);
+  $('#coinNumber').text(roundedCoins);
+}
 
+//switchFormat()
+//
+//a function to switch images' source format from png to gif
+//and store it in a variable
+function switchFormat() {
+  gifStr = pngStr.replace('png', 'gif');
+  console.log(gifStr);
+}
+
+//clickSound()
+//
+//a function to make cute clicking sound
+function clickSound() {
+  $('body').click(function() {
+    click.play();
+  })
 }
