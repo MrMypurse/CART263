@@ -22,22 +22,32 @@ function setup() {
 function dataLoaded(data){
   console.log(data);
 
+  let randomMenu = getRandomArrayElement(data.menuItems);
+  console.log(randomMenu);
+
   let randomCondiment = getRandomArrayElement(data.condiments);
   console.log(randomCondiment);
 
-  let randomCat = getRandomArrayElement(data.cats);
-  console.log(randomCat);
+  let randomGenre = getRandomArrayElement(data.genres);
+  console.log(randomGenre);
 
   let randomRoom = getRandomArrayElement(data.rooms);
   console.log(randomRoom);
 
-  let verb = 'is';
+  let randomMood = getRandomArrayElement(data.moods);
+  console.log(randomMood);
 
+
+  let verb = 'is';
   if (randomCondiment.charAt(randomCondiment.length - 1) === 's'){
     verb = 'are';
+
+  let determiner = 'a';
   }
 
-  let randomDescription = `${randomCondiment} ${verb} like a ${randomCat} in a ${randomRoom}`;
+  let randomDescription = `Eating ${randomMenu} with ${randomCondiment} ${verb}
+                            like listening to ${randomGenre} in a ${randomRoom},
+                            It makes me feel ${randomMood}.`;
   $('body').append(randomDescription);
 
   console.log(verb);
