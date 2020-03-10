@@ -37,24 +37,36 @@ function dataLoaded(data){
   let randomMood = getRandomArrayElement(data.moods);
   console.log(randomMood);
 
-  let determiner = 'a';
-  let vowelWord = randomMenu.charAt(0);
-  console.log(vowelWord);
-  if (vowelWord === 'A'||
-      vowelWord === 'E'||
-      vowelWord === 'I'||
-      vowelWord === 'O'||
-      vowelWord === 'U') {
-     determiner = 'an';
+  let determiner1 = 'a';
+  let determiner2 = 'a';
+  let vowelWord1 = randomMenu.charAt(0);
+  let vowelWord2 = randomRoom.charAt(0);
+  console.log(vowelWord1);
+  console.log(vowelWord2);
+
+  if (vowelWord1 === 'A'||
+      vowelWord1 === 'E'||
+      vowelWord1 === 'I'||
+      vowelWord1 === 'O'||
+      vowelWord1 === 'U') {
+     determiner1 = 'an';
    }else if (randomMenu.charAt(randomMenu.length - 1) === 's'){
-     determiner = '';
+     determiner1 = '';
    }
 
-  let randomDescription = `Eating ${determiner} ${randomMenu} with ${randomCondiment}
-                            like listening to ${randomGenre} in a ${randomRoom},
-                            It makes me feel ${randomMood}.`;
+   if (vowelWord2 === 'a'||
+       vowelWord2 === 'e'||
+       vowelWord2 === 'i'||
+       vowelWord2 === 'o'||
+       vowelWord2 === 'u') {
+      determiner2 = 'an';
+    }
 
-  $('body').append(randomDescription);
+  let randomDescription = `Eating ${determiner1} ${randomMenu} with ${randomCondiment}
+                          is like listening to ${randomGenre} in ${determiner2}
+                          ${randomRoom}. It makes me feel ${randomMood}.`;
+
+  $('h1').append(randomDescription);
 }
 
 
@@ -65,5 +77,8 @@ function dataNotLoaded(request, text, error){
 function getRandomArrayElement(array){
   let element = array[Math.floor(Math.random() * array.length)];
   return element;
+}
+
+function clickToRefresh(){
 
 }
