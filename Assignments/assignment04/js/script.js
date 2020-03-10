@@ -37,20 +37,24 @@ function dataLoaded(data){
   let randomMood = getRandomArrayElement(data.moods);
   console.log(randomMood);
 
-
-  let verb = 'is';
-  if (randomCondiment.charAt(randomCondiment.length - 1) === 's'){
-    verb = 'are';
-
   let determiner = 'a';
-  }
+  let vowelWord = randomMenu.charAt(0);
+  console.log(vowelWord);
+  if (vowelWord === 'A'||
+      vowelWord === 'E'||
+      vowelWord === 'I'||
+      vowelWord === 'O'||
+      vowelWord === 'U') {
+     determiner = 'an';
+   }else if (randomMenu.charAt(randomMenu.length - 1) === 's'){
+     determiner = '';
+   }
 
-  let randomDescription = `Eating ${randomMenu} with ${randomCondiment} ${verb}
+  let randomDescription = `Eating ${determiner} ${randomMenu} with ${randomCondiment}
                             like listening to ${randomGenre} in a ${randomRoom},
                             It makes me feel ${randomMood}.`;
-  $('body').append(randomDescription);
 
-  console.log(verb);
+  $('body').append(randomDescription);
 }
 
 
