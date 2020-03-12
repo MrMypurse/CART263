@@ -11,6 +11,8 @@ to match your project! Write JavaScript to do amazing things below!
 *********************************************************************/
 
 $(document).ready(setup);
+let randomDescription;
+let createSentence;
 //sound effect
 const click = new Audio('assets/sounds/click.wav');
 
@@ -19,6 +21,7 @@ function setup() {
     .done(dataLoaded)
     .fail(dataNotLoaded);
   clickSound();
+  clickToRefresh();
 }
 
 function dataLoaded(data) {
@@ -64,13 +67,14 @@ function dataLoaded(data) {
     determiner2 = 'an';
   }
 
-  let randomDescription = `Eating ${determiner1} ${randomMenu} with ${randomCondiment}
+  randomDescription = `Eating ${determiner1} ${randomMenu} with ${randomCondiment}
                           is like listening to ${randomGenre} in ${determiner2}
                           ${randomRoom}. It makes me feel ${randomMood}.`;
-
-  $('.box1').append(randomDescription);
+  createSentence = $('<div></div>');
+  createSentence.addClass('sentence');
+  createSentence.text(randomDescription);
+  createSentence.appendTo('.box1');
 }
-
 
 function dataNotLoaded(request, text, error) {
   console.error('you fucked up');
@@ -82,7 +86,12 @@ function getRandomArrayElement(array) {
 }
 
 function clickToRefresh() {
-
+  $('#refreshButton').click(function(){
+    $('.sentence').remove();
+    $.getJSON('data/data.json')
+      .done(dataLoaded)
+      .fail(dataNotLoaded);
+  })
 }
 
 //clickSound()

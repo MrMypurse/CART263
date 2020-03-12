@@ -1,11 +1,19 @@
 body,
 h1 {
-  font-family: 'Verdana', Monospace;
+  font-family: 'Permanent Marker';
   background-color: black;
   color: white;
   font-size: 80px;
 }
 
 #refreshButton {
+  padding: 15px 40px;
+  color: white;
+  background-color: transparent;
+  border: 2px solid#ffffff;
+}
 
+#refreshButton:hover{
+  background-color: white;
+  color: black;
 }
