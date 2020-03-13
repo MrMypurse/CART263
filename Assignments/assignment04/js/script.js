@@ -6,7 +6,8 @@ ANOTHER ONE
 Janet Sun
 
 This webpage will never run out of random sentences as long as you don't
-get tired of it!
+get tired of it! ps: if you click on the sentence with love, it will speak
+back to you...
 
 *********************************************************************/
 //load everything
@@ -31,6 +32,8 @@ function setup() {
   //button
   clickSound();
   clickToRefresh();
+  speakWords();
+
   //set up Annyang
   if (annyang) {
     //Call the function after detecting the spoken sentence
@@ -164,6 +167,20 @@ function speakToRefresh() {
     .done(dataLoaded)
     .fail(dataNotLoaded);
 }
+
+//speakWords()
+//
+//a function to call responsiveVoice to speak the words that the user clicked on
+function speakWords() {
+  $('.box1').click(function(){
+    responsiveVoice.speak(randomDescription, 'UK English Female', {
+      pitch: 0.7,
+      speed: 0.1,
+    });
+  })
+}
+
+
 
 //clickSound()
 //
