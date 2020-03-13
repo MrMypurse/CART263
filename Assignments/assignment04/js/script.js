@@ -11,9 +11,10 @@ get tired of it!
 *********************************************************************/
 //load everything
 $(document).ready(setup);
-//set up variables
+//set up variables for the generated sentence and the dialog box text
 let randomDescription;
 let createSentence;
+let welcomeDialog = 'CLICK THE BUTTON OR SPEAK THE BUTTON TO GENERATE NEW SENTENCE';
 //set up sound effect
 const click = new Audio('assets/sounds/click.wav');
 
@@ -25,6 +26,7 @@ function setup() {
   $.getJSON('data/data.json')
     .done(dataLoaded)
     .fail(dataNotLoaded);
+  addDialog();
   //call other function to display sound and to refresh the sentence using a
   //button
   clickSound();
@@ -40,6 +42,36 @@ function setup() {
   }
 }
 
+
+// addDialog()
+//
+//a function to add a dumb question to the middle of the screen.
+function addDialog() {
+  // Dynamically create a div and store it in a variable.
+  //Set its title at the same time.
+  let $dialog = $(`<div></div>`).attr(`title`, `WELCOME`);
+  // Add a p tag to the dialog div that contains the question text
+  $dialog.append(`<p>${welcomeDialog}</p>`);
+  //add the div to the page
+  $('body').append($dialog);
+  //if "yes" is clicked, use is allowed into the webiste;
+  //if "no" is clicked, nothing changes but user is not allowed to use the site
+  $dialog.dialog({
+    autoOpen: true,
+    modal: true,
+    dialogClass: 'no-close',
+    buttons: {
+      "THANK YOU": function() {
+        $(this).dialog(`close`);
+      },
+      "NO": function() {
+        $(this).parent().effect(`shake`);
+      }
+    },
+    // contained within the body tag, and can't be dragged out of it.
+    containment: 'body'
+  });
+}
 //dataLoaded(data)
 //
 //a function to pick random items and display them as a sentence in a class
