@@ -173,7 +173,7 @@ function speakToRefresh() {
 //a function to call responsiveVoice to speak the words that the user clicked on
 function speakWords() {
   $('.box1').click(function(){
-    responsiveVoice.speak(randomDescription, 'UK English Female', {
+    responsiveVoice.speak(randomDescription, 'Japanese Female', {
       pitch: 0.7,
       speed: 0.1,
     });
