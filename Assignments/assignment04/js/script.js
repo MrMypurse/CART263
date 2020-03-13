@@ -17,11 +17,24 @@ let createSentence;
 const click = new Audio('assets/sounds/click.wav');
 
 function setup() {
+
   $.getJSON('data/data.json')
     .done(dataLoaded)
     .fail(dataNotLoaded);
   clickSound();
   clickToRefresh();
+
+  if (annyang) {
+    // Let's define our first command. First the text we expect, and then the function it should call
+    var commands = {
+      'another one': speakToRefresh
+    };
+    // Add our commands to annyang
+    annyang.addCommands(commands);
+
+    // Start listening. You can call this here, or attach this call to an event, button, etc.
+    annyang.start();
+  }
 }
 
 function dataLoaded(data) {
@@ -92,6 +105,13 @@ function clickToRefresh() {
       .done(dataLoaded)
       .fail(dataNotLoaded);
   })
+}
+
+function speakToRefresh(){
+  $('.sentence').remove();
+  $.getJSON('data/data.json')
+    .done(dataLoaded)
+    .fail(dataNotLoaded);
 }
 
 //clickSound()
