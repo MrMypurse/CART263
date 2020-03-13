@@ -123,7 +123,7 @@ function dataLoaded(data) {
   //Construct the sentence using the randomly selected words
   randomDescription = `Eating ${determiner1} ${randomMenu} with ${randomCondiment}
                        and a pot of ${randomTea} is like listening to ${randomGenre}
-                       in ${determiner2}${randomRoom}. It makes me feel ${randomMood}.`;
+                       in ${determiner2} ${randomRoom}. It makes me feel ${randomMood}.`;
   //Make a div box for the sentence and store the sentence in
   createSentence = $('<div></div>');
   createSentence.addClass('sentence');
