@@ -85,6 +85,8 @@ function dataLoaded(data) {
   console.log(randomMenu);
   let randomCondiment = getRandomArrayElement(data.condiments);
   console.log(randomCondiment);
+  let randomTea = getRandomArrayElement(data.teas);
+  console.log(randomTea);
   let randomGenre = getRandomArrayElement(data.genres);
   console.log(randomGenre);
   let randomRoom = getRandomArrayElement(data.rooms);
@@ -120,8 +122,8 @@ function dataLoaded(data) {
   }
   //Construct the sentence using the randomly selected words
   randomDescription = `Eating ${determiner1} ${randomMenu} with ${randomCondiment}
-                          is like listening to ${randomGenre} in ${determiner2}
-                          ${randomRoom}. It makes me feel ${randomMood}.`;
+                       and a pot of ${randomTea} is like listening to ${randomGenre}
+                       in ${determiner2}${randomRoom}. It makes me feel ${randomMood}.`;
   //Make a div box for the sentence and store the sentence in
   createSentence = $('<div></div>');
   createSentence.addClass('sentence');
@@ -173,9 +175,9 @@ function speakToRefresh() {
 //a function to call responsiveVoice to speak the words that the user clicked on
 function speakWords() {
   $('.box1').click(function(){
-    responsiveVoice.speak(randomDescription, 'Japanese Female', {
+    responsiveVoice.speak(randomDescription, 'French Female', {
       pitch: 0.7,
-      speed: 0.1,
+      speed: 2,
     });
   })
 }
