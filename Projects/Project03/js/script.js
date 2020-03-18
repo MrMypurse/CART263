@@ -15,7 +15,7 @@ let w = 1000;
 let h = 1000;
 let cols = w/scale;
 let rows = h/scale;
-let terrainZ = [];
+
 let noiseScale;
 
 // preload()
@@ -33,12 +33,7 @@ function setup() {
   background(0);
   stroke(255);
   noFill();
-  terrainZ = [cols][rows];
-  for(let y = 0; y < rows; y++){
-  for (let x = 0; x < cols; x++){
-    terrainZ[x][y] = random(10,-10);
-  }
-}
+
 }
 
 // draw()
