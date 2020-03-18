@@ -9,11 +9,14 @@ This is a template. You must fill in the title,
 author, and this description to match your project!
 
 ******************/
-let cols;
-let rows;
+
 let scale = 20;
-let w = 600;
-let h = 600;
+let w = 1000;
+let h = 1000;
+let cols = w/scale;
+let rows = h/scale;
+let noiseScale;
+
 
 // preload()
 //
@@ -28,12 +31,11 @@ function preload() {
 // Description of setup
 
 function setup() {
-  createCanvas(600, 600, WEBGL);
+  createCanvas(1000, 800, WEBGL);
+  resizeCanvas(width, height);
   background(0);
   stroke(255);
   noFill();
-  cols = w/scale;
-  rows = h/scale;
 }
 
 
@@ -42,6 +44,9 @@ function setup() {
 // Description of draw()
 
 function draw() {
+  rotateX(PI/3);
+  translate(-w/2, -h/4);
+
   for(let y = 0; y < rows; y++){
     beginShape(TRIANGLE_STRIP);
   for (let x = 0; x < cols; x++){
