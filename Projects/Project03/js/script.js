@@ -1,54 +1,18 @@
 "use strict";
 
-/*****************
+/********************************************************************
 
 Title of Project
 Author Name
 
-This is a template. You must fill in the title,
-author, and this description to match your project!
+This is a template. Fill in the title, author, and this description
+to match your project! Write JavaScript to do amazing things below!
 
-******************/
+*********************************************************************/
 
-let scale = 20;
-let w = 1000;
-let h = 1000;
-let cols = w/scale;
-let rows = h/scale;
+$(document).ready(setup);
 
-let noiseScale;
 
-// preload()
-//
-// Description of preload
-function preload() {
-}
-
-// setup()
-//
-// Description of setup
 function setup() {
-  createCanvas(1000, 800, WEBGL);
-  resizeCanvas(width, height);
-  background(0);
-  stroke(255);
-  noFill();
 
 }
-
-// draw()
-//
-// Description of draw()
-function draw() {
-  rotateX(PI/3);
-  translate(-w/2, -h/4);
-
-  for(let y = 0; y < rows; y++){
-    beginShape(TRIANGLE_STRIP);
-  for (let x = 0; x < cols; x++){
-    vertex(x * scale, y * scale);
-    vertex(x * scale, (y + 1)* scale);
-    }
-    endShape();
-    }
-  }
