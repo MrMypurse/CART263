@@ -8,5 +8,11 @@ body {
 #watercan {
   position: absolute;
   left: 700px;
-  top: 300px;
+  top: 600px;
+}
+
+#fertilizer {
+  position: absolute;
+  left: 700px;
+  top: 100px;
 }

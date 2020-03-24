@@ -23,8 +23,8 @@ function setup() {
   $tree.droppable({
     drop: onDrop
   });
-  $watercan.on("mousedown", function() {
-  })
+  //$watercan.on("mousedown", function() {
+  //})
   $watercan.on("mouseup", function() {
     wateringCollision();
   })
@@ -32,10 +32,9 @@ function setup() {
 
 function onDrop(event, ui) {
   console.log("DROPPED");
-//  ui.draggable.remove();
+  //  ui.draggable.remove();
   //setInterval(checkCollision, 300);
 }
-
 
 function getPositions(object) {
   let objectPosition = object.position();
@@ -54,8 +53,6 @@ function comparePositions(p1, p2) {
 }
 
 function checkCollision(a, b) {
-  //let treeBox = $('#tree')[0];
-
   let position1 = getPositions(a);
   let position2 = getPositions(b);
   let horizontalMatch = comparePositions(position1[0], position2[0]);
@@ -73,12 +70,12 @@ function wateringAnimation() {
   }
 }
 
-function wateringCollision(){
+function wateringCollision() {
   let collision = checkCollision($watercan, $tree);
   if (collision === true) {
     $('body').append('<p> HITTT </p>');
     if (!wateringInterval) {
-        wateringInterval = setInterval(wateringAnimation, 300);
+      wateringInterval = setInterval(wateringAnimation, 300);
     }
   } else {
     clearInterval(wateringInterval);
