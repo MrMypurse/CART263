@@ -27,8 +27,9 @@ function setup() {
   //})
   $watercan.on("mouseup", function() {
     wateringCollision();
+    treeGrowth();
   })
-  treeGrowth();
+
 }
 
 function onDrop(event, ui) {
@@ -88,6 +89,6 @@ function wateringCollision() {
 
 function treeGrowth() {
   if (waterlevel >= 20) {
-    $treen.attr("src", "assets/images/tree1.png");
-  }
+    $tree.attr("src", "assets/images/tree1.png");
+  };
 }
