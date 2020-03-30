@@ -28,6 +28,7 @@ function setup() {
   $watercan.on("mouseup", function() {
     wateringCollision();
   })
+  treeGrowth();
 }
 
 function onDrop(event, ui) {
@@ -64,7 +65,7 @@ function checkCollision(a, b) {
 function wateringAnimation() {
   if ($watercan.attr("src") === "assets/images/watercan0.png") {
     $watercan.attr("src", "assets/images/watercan1.png");
-    waterlevel = waterlevel + 5;
+    console.log(waterlevel);
   } else {
     $watercan.attr("src", "assets/images/watercan0.png");
   }
@@ -73,7 +74,8 @@ function wateringAnimation() {
 function wateringCollision() {
   let collision = checkCollision($watercan, $tree);
   if (collision === true) {
-    $('body').append('<p> HITTT </p>');
+    waterlevel = waterlevel + 5;
+    $('body').append('<p> WATERED </p>');
     if (!wateringInterval) {
       wateringInterval = setInterval(wateringAnimation, 300);
     }
@@ -81,5 +83,11 @@ function wateringCollision() {
     clearInterval(wateringInterval);
     wateringInterval = false;
     $watercan.attr("src", "assets/images/watercan0.png");
+  }
+}
+
+function treeGrowth() {
+  if (waterlevel >= 20) {
+    $treen.attr("src", "assets/images/tree1.png");
   }
 }
