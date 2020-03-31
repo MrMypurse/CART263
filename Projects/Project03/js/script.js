@@ -14,9 +14,15 @@ $(document).ready(setup);
 let wateringInterval;
 let $tree;
 let $watercan;
-let waterlevel = 0;;
+let waterlevel = 0;
+let generatedPoem;
+let createSentence;
 
 function setup() {
+  $.getJSON('data/data.json')
+    .done(dataLoaded)
+    .fail(dataNotLoaded);
+
   $tree = $('#tree');
   $watercan = $('#watercan');
   $watercan.draggable();
@@ -29,7 +35,6 @@ function setup() {
     wateringCollision();
     treeGrowth();
   })
-
 }
 
 function onDrop(event, ui) {
@@ -91,4 +96,30 @@ function treeGrowth() {
   if (waterlevel >= 20) {
     $tree.attr("src", "assets/images/tree1.png");
   };
+}
+
+function dataLoaded(data){
+  console.log(data);
+  let randomPoem = getRandomArrayElement(data.text);
+  generatedPoem = `${randomPoem}`;
+  //Make a div box for the sentence and store the sentence in
+  createSentence = $('<div></div>');
+  createSentence.addClass('poem');
+  createSentence.text(randomPoem);
+  createSentence.appendTo('body');
+}
+
+//dataNotLoaded()
+//
+//a function to insult you if the data isn't correctly loaded
+function dataNotLoaded(request, text, error) {
+  console.error('You fucked up.');
+}
+
+//getRandomArrayElement(array)
+//
+//a function to pick random element from an array
+function getRandomArrayElement(array) {
+  let element = array[Math.floor(Math.random() * array.length)];
+  return element;
 }

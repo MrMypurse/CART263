@@ -1,8 +1,4 @@
-[{
-    "poet": "Maya Angelou",
-    "symbol": "Beyond",
-    "poems": [{
-        "title": "Glory Falls",
+{
         "text": [
           "Glory falls around us",
           "as we sob",
@@ -29,12 +25,7 @@
           "   horror that we feed",
           "   upon our own",
           "   tomorrow.",
-          "We grow."
-        ]
-      },
-      {
-        "title": "Is Love",
-        "text": [
+          "We grow.",
           "Midwives and winding sheets",
           "know birthing is hard",
           "and dying is mean",
@@ -43,12 +34,7 @@
           "Why do we journey, muttering",
           "like rumors among the stars?",
           "Is a dimension lost?",
-          "Is it love?"
-        ]
-      },
-      {
-        "title": "Changes",
-        "text": [
+          "Is it love?",
           "Fickle comfort steals away",
           "What it knows",
           "It will not say",
@@ -56,7 +42,6 @@
           "It will not do",
           "It flies from me",
           "To humor you.",
-          "",
           "Capricious peace will not bind",
           "The severed nerves",
           "The jagged mind",
@@ -64,32 +49,20 @@
           "The loveless sleep",
           "It frolics now",
           "Within your keep.",
-          "",
           "Confidence, that popinjay",
           "Is planning now",
           "To slip away",
           "Look fast",
           "It's fading rapidly",
-          "Tomorrow it returns to me."
-        ]
-      },
-      {
-        "title": "Recovery",
-        "text": [
+          "Tomorrow it returns to me.",
           "A last love,",
           "proper in conclusion,",
           "should snip the wings",
           "forbidding further flight.",
-          "",
           "But I, now,",
           "reft of that confusion,",
           "am lifted up",
-          "and speeding toward the light."
-        ]
-      },
-      {
-        "title": "Awaking in New York",
-        "text": [
+          "and speeding toward the light.",
           "Curtains forcing their will",
           "against the wind,",
           "children sleep,",
@@ -100,12 +73,7 @@
           "I, an alarm, awake as a",
           "rumor of war,",
           "lay stretching into dawn,",
-          "unasked and unheeded."
-        ]
-      },
-      {
-        "title": "Still I Rise",
-        "text": [
+          "unasked and unheeded.",
           "You may write me down in history",
           "With your bitter, twisted lies,",
           "You may trod me in the very dirt",
@@ -156,12 +124,7 @@
           "I am the dream and the hope of the slave.",
           "I rise",
           "I rise",
-          "I rise."
-        ]
-      },
-      {
-        "title": "The Lesson",
-        "text": [
+          "I rise.",
           "I keep on dying again.",
           "Veins collapse, opening like the",
           "Small fists of sleeping",
@@ -174,12 +137,7 @@
           "Lines along my face.",
           "They dull my eyes, yet",
           "I keep on dying,",
-          "Because I love to live."
-        ]
-      },
-      {
-        "title": "Phenomenal Woman",
-        "text": [
+          "Because I love to live.",
           "Pretty women wonder where my secret lies.",
           "I'm not cute or built to suit a fashion model's size",
           "But when I start to tell them,",
@@ -242,12 +200,7 @@
           "'Cause I'm a woman",
           "Phenomenally.",
           "Phenomenal woman,",
-          "That's me."
-        ]
-      },
-      {
-        "title": "Elegy",
-        "text": [
+          "That's me.",
           "I lay down in my grave",
           "and watch my children",
           "grow",
@@ -277,18 +230,7 @@
           "",
           "I lay down in my grave",
           "and watch my children",
-          "grow."
-        ]
-      }
-    ]
-  },
-  {
-    "poet": "Li-Young Lee",
-    "symbol": "Before",
-    "poems": [{
-        "title": "Furious Versions",
-        "text": [
-          "1.",
+          "grow.",
           "These days I waken in the used light",
           "of someone's spent life, to discover",
           "the birds have stripped my various names of meaning entire:",
@@ -357,12 +299,7 @@
           "and faraway noise of hammering,",
           "and on a page a poem begun, something",
           "about to be dispersed,",
-          "something about to come into being."
-        ]
-      },
-      {
-        "title": "With Ruins",
-        "text": [
+          "something about to come into being.",
           "Choose a quiet",
           "place, a ruins, a house no more",
           "a house,",
@@ -426,12 +363,7 @@
           "for those who own no place",
           "to correspond to ruins in the soul.",
           "It's mine.",
-          "It's all yours."
-        ]
-      },
-      {
-        "title": "This Room and Everything in It",
-        "text": [
+          "It's all yours.",
           "Lie still now",
           "while I prepare for my future,",
           "certain hard days ahead,",
@@ -495,17 +427,7 @@
           "has evaporated...your hair is time, your thighs are song...",
           "it had something to do",
           "with death...it had something",
-          "to do with love."
-        ]
-      }
-    ]
-  },
-  {
-    "poet": "Mary Oliver",
-    "symbol": "Betwixt",
-    "poems": [{
-        "title": "7 The Forest",
-        "text": [
+          "to do with love.",
           "At night",
           "under the trees",
           "the black snake",
@@ -555,12 +477,7 @@
           "but does not hesitate.",
           "He inches forward.",
           "He begins to bleed through",
-          "like satin."
-        ]
-      },
-      {
-        "title": "When Death Comes",
-        "text": [
+          "like satin.",
           "When death comes",
           "like the hungry bear in autumn;",
           "when death comes and takes all the bright coins from his purse",
@@ -598,12 +515,7 @@
           "I don't want to find myself sighing and frightened,",
           "or full of argument.",
           "",
-          "I don't want to end up simply having visited this world."
-        ]
-      },
-      {
-        "title": "Morning",
-        "text": [
+          "I don't want to end up simply having visited this world.",
           "Salt shining behind its glass cylinder.",
           "Milk in a blue bowl. The yellow linoleum.",
           "The cat stretching her black body from the pillow.",
@@ -615,12 +527,7 @@
           "I watch her a little while, thinking:",
           "what more could I do with wild words?",
           "I stand in the cold kitchen, bowing down to her.",
-          "I stand in the cold kitchen, everything wonderful around me."
-        ]
-      },
-      {
-        "title": "The Sun",
-        "text": [
+          "I stand in the cold kitchen, everything wonderful around me.",
           "Have you ever seen",
           "anything",
           "in your life",
@@ -663,12 +570,7 @@
           "or have you too",
           "gone crazy",
           "for power,",
-          "for things?"
-        ]
-      },
-      {
-        "title": "Winter",
-        "text": [
+          "for things?",
           "And the waves",
           "gush pearls",
           "from their snowy throats",
@@ -704,12 +606,7 @@
           "and the wind still pounding",
           "and the sea still streaming in like a mother wild with gifts—",
           "in this world I am as rich",
-          "as I need to be."
-        ]
-      },
-      {
-        "title": "Singapore",
-        "text": [
+          "as I need to be.",
           "In Singapore, in the airport,",
           "a darkness was ripped from my eyes.",
           "In the women's restroom, one compartment stood open.",
@@ -753,12 +650,7 @@
           "the light that can shine out of a life. I mean",
           "the way she unfolded and refolded the blue cloth,",
           "the way her smile was only for my sake; I mean",
-          "the way this poem is filled with trees, and birds."
-        ]
-      },
-      {
-        "title": "The Summer Day",
-        "text": [
+          "the way this poem is filled with trees, and birds.",
           "Who made the world?",
           "Who made the swan, and the black bear?",
           "Who made the grasshopper?",
@@ -777,12 +669,7 @@
           "Tell me, what else should I have done?",
           "Doesn't everything die at last, and too soon?",
           "Tell me, what is it you plan to do",
-          "with your one wild and precious life?"
-        ]
-      },
-      {
-        "title": "Morning Poem",
-        "text": [
+          "with your one wild and precious life?",
           "Every morning",
           "the world",
           "is created.",
@@ -825,12 +712,7 @@
           "whether or not",
           "you have ever dared to be happy,",
           "whether or not",
-          "you have ever dared to pray."
-        ]
-      },
-      {
-        "title": "Wild Geese",
-        "text": [
+          "you have ever dared to pray.",
           "You do not have to be good.",
           "You do not have to walk on your knees",
           "for a hundred miles through the desert, repenting.",
@@ -851,6 +733,3 @@
           "in the family of things."
         ]
       }
-    ]
-  }
-]
