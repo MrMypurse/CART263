@@ -7,8 +7,16 @@ body {
 
 #tree {
   position:absolute;
-  top: 650px;
+  top: 600px;
   left: 830px;
+}
+
+#dialogbox {
+  height: 300px;
+  width: 300px;
+  position: absolute;
+  right: 500px;
+  top: 200px;
 }
 
 #watercan {
