@@ -1,22 +1,28 @@
 body {
+  background-color: lightblue;
+  background-image: url('../assets/images/bg.gif');
+  background-position: top center;
+  background-repeat: no-repeat;
 }
 
 #tree {
   position:absolute;
+  top: 650px;
+  left: 830px;
 }
 
 #watercan {
   height: 300px;
   width: 300px;
   position: absolute;
-  left: 700px;
-  top: 600px;
+  left: 50px;
+  top: 400px;
 }
 
 #fertilizer {
   height: 300px;
   width: 300px;
   position: absolute;
-  left: 700px;
+  left: 50px;
   top: 100px;
 }
