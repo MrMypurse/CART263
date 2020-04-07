@@ -12,9 +12,12 @@ to match your project! Write JavaScript to do amazing things below!
 
 $(document).ready(setup);
 let wateringInterval;
+let fertilizingInterval;
 let $tree;
 let $watercan;
+let $fertilizer;
 let waterlevel = 0;
+let fertilizelevel = 0;
 let generatedPoem;
 let createSentence;
 
@@ -25,7 +28,9 @@ function setup() {
 
   $tree = $('#tree');
   $watercan = $('#watercan');
+  $fertilizer = $('#fertilizer');
   $watercan.draggable();
+  $fertilizer.draggable();
   $tree.droppable({
     drop: onDrop
   });
@@ -33,6 +38,10 @@ function setup() {
   //})
   $watercan.on("mouseup", function() {
     wateringCollision();
+    treeGrowth();
+  })
+  $fertilizer.on("mouseup", function() {
+    fertilizingCollision();
     treeGrowth();
   })
 }
@@ -77,6 +86,14 @@ function wateringAnimation() {
   }
 }
 
+function fertilizingAnimation(){
+  if ($fertilizer.attr('src') === 'assets/images/fertilizer0.png') {
+    $fertilizer.attr('src', 'assets/images/fertilizer1.png');
+  } else {
+    $fertilizer.attr('src', 'assets/images/fertilizer0.png');
+  }
+}
+
 function wateringCollision() {
   let collision = checkCollision($watercan, $tree);
   if (collision === true) {
@@ -92,8 +109,23 @@ function wateringCollision() {
   }
 }
 
+function fertilizingCollision(){
+  let collision = checkCollision($fertilizer, $tree);
+  if (collision === true) {
+    fertilizelevel = fertilizelevel + 5;
+    $('body').append('<p>fertilized</p>');
+    if(!fertilizingInterval) {
+      fertilizingInterval = setInterval(fertilizingAnimation, 300);
+    }
+  } else {
+    clearInterval(fertilizingInterval);
+    fertilizingInterval = false;
+    $fertilizer.attr('src', 'assets/images/fertilizer0.png');
+  }
+}
+
 function treeGrowth() {
-  if (waterlevel >= 20) {
+  if (waterlevel >= 20 && fertilizelevel >= 20) {
     $tree.attr("src", "assets/images/tree1.png");
   };
 }

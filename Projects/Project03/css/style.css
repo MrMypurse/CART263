@@ -15,14 +15,16 @@ body {
   height: 300px;
   width: 300px;
   position: absolute;
-  right: 500px;
-  top: 200px;
+  top: 30%;
+  left: 50%;
 }
 
 #poembox {
   position: absolute;
-  left: 1020px;
-  top: 300px;
+  height: 300px;
+  width: 270px;
+  top: 42%;
+  left: 51%;
 }
 
 #watercan {
