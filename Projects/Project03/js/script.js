@@ -44,6 +44,7 @@ function setup() {
     fertilizingCollision();
     treeGrowth();
   })
+  newPoem();
 }
 
 function onDrop(event, ui) {
@@ -154,4 +155,13 @@ function dataNotLoaded(request, text, error) {
 function getRandomArrayElement(array) {
   let element = array[Math.floor(Math.random() * array.length)];
   return element;
+}
+
+function newPoem () {
+  $tree.click(function() {
+    $('.poem').remove();
+    $.getJSON('data/data.json')
+      .done(dataLoaded)
+      .fail(dataNotLoaded);
+  })
 }
