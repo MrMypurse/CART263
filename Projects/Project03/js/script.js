@@ -106,7 +106,7 @@ function dataLoaded(data){
   createSentence = $('<div></div>');
   createSentence.addClass('poem');
   createSentence.text(randomPoem);
-  createSentence.appendTo('body');
+  createSentence.appendTo('#poembox');
 }
 
 //dataNotLoaded()

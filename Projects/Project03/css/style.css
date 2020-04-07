@@ -19,6 +19,12 @@ body {
   top: 200px;
 }
 
+#poembox {
+  position: absolute;
+  left: 1020px;
+  top: 300px;
+}
+
 #watercan {
   height: 300px;
   width: 300px;
