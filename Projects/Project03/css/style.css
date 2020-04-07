@@ -1,4 +1,6 @@
 body {
+  font-family: 'Teko', sans-serif;
+  font-size: 25px;
   background-color: lightblue;
   background-image: url('../assets/images/bg.gif');
   background-position: top center;
