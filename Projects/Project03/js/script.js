@@ -21,11 +21,17 @@ let waterlevel = 0;
 let fertilizelevel = 0;
 let generatedPoem;
 let createSentence;
-
+//sound effect
+const clickSound = new Audio('assets/sounds/click.wav');
+const ambienceSound = new Audio('assets/sounds/ambience.mp3');
+const bagSound = new Audio('assets/sounds/bag.mp3');
+const fertilizeSound = new Audio('assets/sounds/fertilize.mp3');
+const wateringSound = new Audio('assets/sounds/watering.mp3');
+const canSound = new Audio('assets/sounds/can.mp3');
 function setup() {
-  if (state === 'TITLE') {
     changeScreen();
-  }
+    generateSounds();
+
   $.getJSON('data/data.json')
     .done(dataLoaded)
     .fail(dataNotLoaded);
@@ -37,11 +43,16 @@ function setup() {
   $tree.droppable({
     drop: onDrop
   });
-  //$watercan.on("mousedown", function() {
-  //})
+  $watercan.on("mousedown", function() {
+  canSound.play();
+})
+$fertilizer.on("mousedown", function() {
+bagSound.play();
+})
   $watercan.on("mouseup", function() {
     wateringCollision();
     treeGrowth();
+
   })
   $fertilizer.on("mouseup", function() {
     fertilizingCollision();
@@ -57,13 +68,15 @@ function onDrop(event, ui) {
 }
 
 function changeScreen() {
-  $('body').click (function(){
-    $('#title').hide();
-    $('#introduction').hide();
-    $('#gamebox').show();
-  });
-  state = 'PLAY';
-  console.log(state);
+  if (state === 'TITLE') {
+    $('body').click (function(){
+      $('#title').hide();
+      $('#introduction').hide();
+      $('#gamebox').show();
+    });
+    state = 'PLAY';
+    console.log(state);
+  }
 }
 
 function getPositions(object) {
@@ -111,6 +124,7 @@ function fertilizingAnimation(){
 function wateringCollision() {
   let collision = checkCollision($watercan, $tree);
   if (collision === true) {
+    wateringSound.play();
     waterlevel = waterlevel + 5;
     $('body').append('<p> WATERED </p>');
     if (!wateringInterval) {
@@ -126,10 +140,11 @@ function wateringCollision() {
 function fertilizingCollision(){
   let collision = checkCollision($fertilizer, $tree);
   if (collision === true) {
+    fertilizeSound.play();
     fertilizelevel = fertilizelevel + 5;
     $('body').append('<p>fertilized</p>');
     if(!fertilizingInterval) {
-      fertilizingInterval = setInterval(fertilizingAnimation, 300);
+      fertilizingInterval = setInterval(fertilizingAnimation, 200);
     }
   } else {
     clearInterval(fertilizingInterval);
@@ -176,5 +191,13 @@ function newPoem () {
     $.getJSON('data/data.json')
       .done(dataLoaded)
       .fail(dataNotLoaded);
+  })
+}
+
+function generateSounds() {
+  ambienceSound.loop = true;
+//  ambienceSound.play();
+  $('body').click(function() {
+    clickSound.play();
   })
 }
