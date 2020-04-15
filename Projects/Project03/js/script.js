@@ -196,7 +196,7 @@ function newPoem () {
 
 function generateSounds() {
   ambienceSound.loop = true;
-//  ambienceSound.play();
+  ambienceSound.play();
   $('body').click(function() {
     clickSound.play();
   })
