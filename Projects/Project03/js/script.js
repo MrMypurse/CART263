@@ -11,6 +11,7 @@ to match your project! Write JavaScript to do amazing things below!
 *********************************************************************/
 
 $(document).ready(setup);
+let state = 'TITLE';
 let wateringInterval;
 let fertilizingInterval;
 let $tree;
@@ -22,10 +23,12 @@ let generatedPoem;
 let createSentence;
 
 function setup() {
+  if (state === 'TITLE') {
+    changeScreen();
+  }
   $.getJSON('data/data.json')
     .done(dataLoaded)
     .fail(dataNotLoaded);
-
   $tree = $('#tree');
   $watercan = $('#watercan');
   $fertilizer = $('#fertilizer');
@@ -51,6 +54,16 @@ function onDrop(event, ui) {
   console.log("DROPPED");
   //  ui.draggable.remove();
   //setInterval(checkCollision, 300);
+}
+
+function changeScreen() {
+  $('body').click (function(){
+    $('#title').hide();
+    $('#introduction').hide();
+    $('#gamebox').show();
+  });
+  state = 'PLAY';
+  console.log(state);
 }
 
 function getPositions(object) {

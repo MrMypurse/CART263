@@ -1,28 +1,50 @@
 body {
   font-family: 'Teko', sans-serif;
-  font-size: 25px;
   background-color: lightblue;
   background-image: url('../assets/images/bg.gif');
   background-position: top center;
   background-repeat: no-repeat;
 }
 
+#title {
+  position: absolute;
+  height: 300px;
+  width: 700px;
+  top: 22%;
+  left: 45%;
+  font-size: 70px;
+}
+
+#introduction {
+  position: absolute;
+  height: 400px;
+  width: 500px;
+  top: 45%;
+  left: 45%;
+  font-size: 25px;
+}
+
+#gamebox {
+  display: none;
+  font-size: 25px;
+}
+
 #tree {
-  position:absolute;
+  position: absolute;
   top: 600px;
   left: 830px;
 }
 
 #dialogbox {
+    position: absolute;
   height: 300px;
   width: 300px;
-  position: absolute;
   top: 30%;
   left: 50%;
 }
 
 #poembox {
-  position: absolute;
+    position: absolute;
   height: 300px;
   width: 270px;
   top: 42%;
@@ -30,25 +52,33 @@ body {
 }
 
 #watercan {
+  position: absolute;
   height: 280px;
   width: 280px;
-  position: absolute;
-  left: 50px;
-  top: 30px;
+  left: 3%;
+  top: 5%;
 }
 
 #fertilizer {
+  position: absolute;
   height: 280px;
   width: 280px;
-  position: absolute;
-  left: 50px;
-  top: 330px;
+  left: 3%;
+  top: 40%;
 }
 
 #scissor {
+  position: absolute;
   height: 280px;
   width: 280px;
+  left: 3%;
+  top: 75%;
+}
+
+#instruction {
   position: absolute;
-  left: 50px;
-  top: 630px;
+  width: 300px;
+  height: 800px;
+  left: 80%;
+  top: 20%;
 }
