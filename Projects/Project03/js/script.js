@@ -11,65 +11,88 @@ to match your project! Write JavaScript to do amazing things below!
 *********************************************************************/
 
 $(document).ready(setup);
+//Set up game state to change between menu and main game
 let state = 'TITLE';
+//Set up objects intervals
 let wateringInterval;
 let fertilizingInterval;
+let trimmingInterval;
+//Set up variables
 let $tree;
 let $watercan;
 let $fertilizer;
+let $scissor;
 let waterlevel = 0;
 let fertilizelevel = 0;
+//set up variables to store generated poems
 let generatedPoem;
 let createSentence;
-//sound effect
+//Add background music and sound effect
 const clickSound = new Audio('assets/sounds/click.wav');
 const ambienceSound = new Audio('assets/sounds/ambience.mp3');
 const bagSound = new Audio('assets/sounds/bag.mp3');
 const fertilizeSound = new Audio('assets/sounds/fertilize.mp3');
 const wateringSound = new Audio('assets/sounds/watering.mp3');
 const canSound = new Audio('assets/sounds/can.mp3');
-function setup() {
-    changeScreen();
-    generateSounds();
 
+//setup()
+//
+//Set up variables and call functions to start game
+function setup() {
+  changeScreen();
+  generateSounds();
+  //Get datas
   $.getJSON('data/data.json')
     .done(dataLoaded)
     .fail(dataNotLoaded);
+  //store classes in variables
   $tree = $('#tree');
   $watercan = $('#watercan');
   $fertilizer = $('#fertilizer');
+  $scissor = $('#scissor');
+  //Make the objects draggable
   $watercan.draggable();
   $fertilizer.draggable();
+  $scissor.draggable();
   $tree.droppable({
     drop: onDrop
   });
+  //Play sound when interacted with watering can
   $watercan.on("mousedown", function() {
-  canSound.play();
-})
-$fertilizer.on("mousedown", function() {
-bagSound.play();
-})
+    canSound.play();
+  })
+  //Play sound when interacted with fertilizing bag
+  $fertilizer.on("mousedown", function() {
+    bagSound.play();
+  })
+  //Check for collision when the mouse is dragging the watering can
   $watercan.on("mouseup", function() {
     wateringCollision();
     treeGrowth();
-
   })
+  //Check for collision when the mouse is dragging the fertilizing bag
   $fertilizer.on("mouseup", function() {
     fertilizingCollision();
     treeGrowth();
   })
+  // Check for collision when the mouse is draggin the scissor
+  $scissor.on("mouseup", function() {
+    scissorCollision();
+  })
+  // Call for generating new poem
   newPoem();
 }
 
 function onDrop(event, ui) {
   console.log("DROPPED");
-  //  ui.draggable.remove();
-  //setInterval(checkCollision, 300);
 }
 
+//changeScreen()
+//
+//Change screen from menu to gameplay when the menu is clicked
 function changeScreen() {
   if (state === 'TITLE') {
-    $('body').click (function(){
+    $('body').click(function() {
       $('#title').hide();
       $('#introduction').hide();
       $('#gamebox').show();
@@ -79,6 +102,9 @@ function changeScreen() {
   }
 }
 
+//getPositions()
+//
+//Store the objects'positions in arrays
 function getPositions(object) {
   let objectPosition = object.position();
   let objectWidth = object.width();
@@ -89,12 +115,18 @@ function getPositions(object) {
   ];
 }
 
+//comparePositions()
+//
+//Compare the positions of two objects and return true or false
 function comparePositions(p1, p2) {
   let x1 = p1[0] < p2[0] ? p1 : p2;
   let x2 = p1[0] < p2[0] ? p2 : p1;
   return x1[1] > x2[0] || x1[0] === x2[0] ? true : false;
 }
 
+//checkCollision()
+//
+//Verify if two objects are colliding
 function checkCollision(a, b) {
   let position1 = getPositions(a);
   let position2 = getPositions(b);
@@ -104,16 +136,21 @@ function checkCollision(a, b) {
   return match;
 }
 
+//wateringAnimation()
+//
+//Play the watering animation when two objects collide
 function wateringAnimation() {
   if ($watercan.attr("src") === "assets/images/watercan0.png") {
     $watercan.attr("src", "assets/images/watercan1.png");
-    console.log(waterlevel);
   } else {
     $watercan.attr("src", "assets/images/watercan0.png");
   }
 }
 
-function fertilizingAnimation(){
+//fertilizingAnimation()
+//
+//Play the fertilizing animation when two objects collide
+function fertilizingAnimation() {
   if ($fertilizer.attr('src') === 'assets/images/fertilizer0.png') {
     $fertilizer.attr('src', 'assets/images/fertilizer1.png');
   } else {
@@ -121,12 +158,27 @@ function fertilizingAnimation(){
   }
 }
 
+//trimmingAnimation()
+//
+//Play the trimming animation when two objects collide
+function trimmingAnimation() {
+  if ($scissor.attr('src') === 'assets/images/scissor0.png') {
+    $scissor.attr('src', 'assets/images/scissor1.png');
+  } else {
+    $scissor.attr('src', 'assets/images/scissor0.png');
+  }
+}
+
+//wateringCollision()
+//
+//Call checking collision between watering can and tree
 function wateringCollision() {
   let collision = checkCollision($watercan, $tree);
+  //if the two objects collide, play the sound effects, raise waterlevel and play the animation
   if (collision === true) {
     wateringSound.play();
     waterlevel = waterlevel + 5;
-    $('body').append('<p> WATERED </p>');
+    //$('body').append('<p> WATERED </p>');
     if (!wateringInterval) {
       wateringInterval = setInterval(wateringAnimation, 300);
     }
@@ -137,13 +189,17 @@ function wateringCollision() {
   }
 }
 
-function fertilizingCollision(){
+//fertilizingCollision()
+//
+//Call checking collision between fertilizer and tree
+function fertilizingCollision() {
   let collision = checkCollision($fertilizer, $tree);
+  //if the two objects collide, play the sound effects, raise fertilizing level and play the animation
   if (collision === true) {
     fertilizeSound.play();
     fertilizelevel = fertilizelevel + 5;
-    $('body').append('<p>fertilized</p>');
-    if(!fertilizingInterval) {
+    //$('body').append('<p>fertilized</p>');
+    if (!fertilizingInterval) {
       fertilizingInterval = setInterval(fertilizingAnimation, 200);
     }
   } else {
@@ -153,6 +209,28 @@ function fertilizingCollision(){
   }
 }
 
+//scissorCollision()
+//
+//Call checking collision between fertilizer and tree
+function scissorCollision() {
+  let collision = checkCollision($scissor, $tree);
+  //if the two objects collide, play the sound effects and play the animation
+  if (collision === true) {
+    //fertilizeSound.play();
+    $('body').append('<p>trimmed</p>');
+    if (!trimmingInterval) {
+      trimmingInterval = setInterval(trimmingAnimation, 200);
+    }
+  } else {
+    clearInterval(trimmingInterval);
+    trimmingInterval = false;
+    $scissor.attr('src', 'assets/images/scissor0.png');
+  }
+}
+
+//treeGrowth()
+//
+//Check for water level and fertilizing level to grow the tree
 function treeGrowth() {
   if (waterlevel >= 20 && fertilizelevel >= 20) {
     $tree.attr("src", "assets/images/tree1.png");
@@ -169,9 +247,22 @@ function treeGrowth() {
   if (waterlevel >= 100 && fertilizelevel >= 100) {
     $tree.attr("src", "assets/images/tree5.png");
   };
+  if (waterlevel >= 120 && fertilizelevel >= 120) {
+    $tree.attr("src", "assets/images/tree6.png");
+  };
+  if (waterlevel >= 140 && fertilizelevel >= 140) {
+    $tree.attr("src", "assets/images/tree7.png");
+  };
+  if (waterlevel >= 160 && fertilizelevel >= 160) {
+    $tree.attr("src", "assets/images/tree8.png");
+    endGame();
+  };
 }
 
-function dataLoaded(data){
+//dataLoaded
+//
+//Generate poems from the data and add new poem to the body
+function dataLoaded(data) {
   console.log(data);
   let randomPoem = getRandomArrayElement(data.text);
   generatedPoem = `${randomPoem}`;
@@ -197,7 +288,10 @@ function getRandomArrayElement(array) {
   return element;
 }
 
-function newPoem () {
+//newPoem()
+//
+//Add new generated poem when the tree is clicked
+function newPoem() {
   $tree.click(function() {
     $('.poem').remove();
     $.getJSON('data/data.json')
@@ -206,10 +300,17 @@ function newPoem () {
   })
 }
 
+//generatedSounds()
+//
+//Play background sounds and objects' sound effects
 function generateSounds() {
   ambienceSound.loop = true;
   ambienceSound.play();
   $('body').click(function() {
     clickSound.play();
   })
+}
+
+function endGame() {
+
 }
