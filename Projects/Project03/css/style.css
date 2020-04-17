@@ -31,25 +31,24 @@ body {
 
 #tree {
   position: absolute;
-  bottom: 0.5%;
-  left: 45%;
-  vertical-align:baseline;
+  bottom: 5px;
+  left: 44%;
 }
 
 #dialogbox {
-    position: absolute;
+  position: absolute;
   height: 300px;
   width: 300px;
-  top: 30%;
-  left: 50%;
+  top: 20%;
+  left: 55%;
 }
 
 #poembox {
     position: absolute;
   height: 300px;
   width: 270px;
-  top: 42%;
-  left: 51%;
+  top: 31%;
+  left: 56%;
 }
 
 #watercan {
