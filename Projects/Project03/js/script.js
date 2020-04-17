@@ -157,6 +157,15 @@ function treeGrowth() {
   if (waterlevel >= 20 && fertilizelevel >= 20) {
     $tree.attr("src", "assets/images/tree1.png");
   };
+  if (waterlevel >= 40 && fertilizelevel >= 40) {
+    $tree.attr("src", "assets/images/tree2.png");
+  };
+  if (waterlevel >= 60 && fertilizelevel >= 60) {
+    $tree.attr("src", "assets/images/tree3.png");
+  };
+  if (waterlevel >= 80 && fertilizelevel >= 80) {
+    $tree.attr("src", "assets/images/tree4.png");
+  };
 }
 
 function dataLoaded(data){

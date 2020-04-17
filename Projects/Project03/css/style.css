@@ -31,8 +31,9 @@ body {
 
 #tree {
   position: absolute;
-  top: 600px;
-  left: 830px;
+  bottom: 0.5%;
+  left: 45%;
+  vertical-align:baseline;
 }
 
 #dialogbox {
