@@ -35,6 +35,12 @@ body {
   left: 44%;
 }
 
+#weeds {
+  position: absolute;
+  bottom: 5px;
+  left: 44%;
+}
+
 #dialogbox {
   position: absolute;
   height: 300px;

@@ -11,7 +11,7 @@ to match your project! Write JavaScript to do amazing things below!
 *********************************************************************/
 
 $(document).ready(setup);
-//Set up game state to change between menu and main game
+//Set up game state to change between menu, main game and ending
 let state = 'TITLE';
 //Set up objects intervals
 let wateringInterval;
@@ -34,6 +34,7 @@ const bagSound = new Audio('assets/sounds/bag.mp3');
 const fertilizeSound = new Audio('assets/sounds/fertilize.mp3');
 const wateringSound = new Audio('assets/sounds/watering.mp3');
 const canSound = new Audio('assets/sounds/can.mp3');
+const scissorSound = new Audio('assets/sounds/scissor.mp3');
 
 //setup()
 //
@@ -50,10 +51,11 @@ function setup() {
   $watercan = $('#watercan');
   $fertilizer = $('#fertilizer');
   $scissor = $('#scissor');
+  $weeds = $('#weeds');
   //Make the objects draggable
+  $scissor.draggable();
   $watercan.draggable();
   $fertilizer.draggable();
-  $scissor.draggable();
   $tree.droppable({
     drop: onDrop
   });
@@ -216,7 +218,7 @@ function scissorCollision() {
   let collision = checkCollision($scissor, $tree);
   //if the two objects collide, play the sound effects and play the animation
   if (collision === true) {
-    //fertilizeSound.play();
+    scissorSound.play();
     $('body').append('<p>trimmed</p>');
     if (!trimmingInterval) {
       trimmingInterval = setInterval(trimmingAnimation, 200);
@@ -255,13 +257,14 @@ function treeGrowth() {
   };
   if (waterlevel >= 160 && fertilizelevel >= 160) {
     $tree.attr("src", "assets/images/tree8.png");
+    state = 'END';
     endGame();
   };
 }
 
 //dataLoaded
 //
-//Generate poems from the data and add new poem to the body
+//Generate poems from the data if it is correctly loaded and add new poem to the body
 function dataLoaded(data) {
   console.log(data);
   let randomPoem = getRandomArrayElement(data.text);
@@ -275,7 +278,7 @@ function dataLoaded(data) {
 
 //dataNotLoaded()
 //
-//a function to insult you if the data isn't correctly loaded
+//Insult you if the data isn't correctly loaded
 function dataNotLoaded(request, text, error) {
   console.error('You fucked up.');
 }
@@ -312,5 +315,8 @@ function generateSounds() {
 }
 
 function endGame() {
+  if (state === 'END'){
+    $('.poem').remove();
 
+  }
 }
