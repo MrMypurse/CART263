@@ -154,29 +154,28 @@ function changeScreen() {
 //titleScreen()
 //
 //Display the title screen
-function titleScreen(){
+function titleScreen() {
   $('#title').show();
   $('#introduction').show();
   $('#ending').hide();
   $('#gamebox').hide();
+  //click to start the gameplay
   if (state === 'TITLE') {
     $('body').click(function() {
       state = 'PLAY';
       changeScreen();
     });
   }
-  console.log(state);
 }
 
 //playScreen()
 //
 //Display the gameplay
-function playScreen(){
+function playScreen() {
   $('#title').hide();
   $('#introduction').hide();
   $('#ending').hide();
   $('#gamebox').show();
-    console.log(state);
 }
 
 //endScreen()
@@ -187,9 +186,7 @@ function endScreen() {
   $('#introduction').hide();
   $('#ending').show();
   $('#gamebox').hide();
-    console.log(state);
 }
-
 
 //getPositions()
 //
@@ -339,8 +336,6 @@ function weedsGrowth() {
 //
 //Check for water level and fertilizing level to grow the tree
 function treeGrowth() {
-  console.log(waterlevel);
-  console.log(fertilizelevel);
   if (waterlevel >= 20 && fertilizelevel >= 20) {
     $tree.attr("src", "assets/images/tree1.png");
   };
@@ -369,7 +364,6 @@ function treeGrowth() {
   if (waterlevel >= 165 && fertilizelevel >= 165) {
     state = 'END';
     changeScreen();
-    console.log(state);
   };
 }
 
