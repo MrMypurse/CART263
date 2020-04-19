@@ -6,6 +6,7 @@ A Poem Lovely As A Tree
 Program: Janet Sun
 Art: Janet Sun
 Sound: freesound.org
+Data: Jenna Xu on Github
 
 You have left your 9 to 5 job in the city to persue the farm life you always wanted.
 Arriving at your farm, you find a small sapling. </p>
