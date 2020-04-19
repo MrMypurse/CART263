@@ -48,6 +48,7 @@ function setup() {
   generateSounds();
   // Call for generating new poem
   newPoem();
+  speakPoem();
   //Get datas
   $.getJSON('data/data.json')
     .done(dataLoaded)
@@ -340,6 +341,15 @@ function newPoem() {
     $.getJSON('data/data.json')
       .done(dataLoaded)
       .fail(dataNotLoaded);
+}
+
+//speakPoem()
+//
+//a function to call responsiveVoice to speak the words that the user clicked on
+function speakPoem() {
+  $('#tree').click(function(){
+    responsiveVoice.speak($(createSentence).text(), 'UK English Female');
+});
 }
 
 //generatedSounds()
