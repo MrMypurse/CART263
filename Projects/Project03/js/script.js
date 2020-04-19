@@ -17,7 +17,10 @@ let state = 'TITLE';
 let wateringInterval;
 let fertilizingInterval;
 let trimmingInterval;
+let weedsInterval;
+let weedsGrowingTime;
 //Set up variables
+let $weeds;
 let $tree;
 let $watercan;
 let $fertilizer;
@@ -47,11 +50,11 @@ function setup() {
     .done(dataLoaded)
     .fail(dataNotLoaded);
   //store classes in variables
+  $weeds = $('#weeds');
   $tree = $('#tree');
   $watercan = $('#watercan');
   $fertilizer = $('#fertilizer');
   $scissor = $('#scissor');
-  $weeds = $('#weeds');
   //Make the objects draggable
   $scissor.draggable();
   $watercan.draggable();
@@ -219,17 +222,24 @@ function scissorCollision() {
   //if the two objects collide, play the sound effects and play the animation
   if (collision === true) {
     scissorSound.play();
-    $('body').append('<p>trimmed</p>');
+    //$('body').append('<p>trimmed</p>');
     if (!trimmingInterval) {
       trimmingInterval = setInterval(trimmingAnimation, 200);
+      $('#weeds').hide();
+      clearInterval(weedsInterval);
     }
   } else {
     clearInterval(trimmingInterval);
+    weedsInterval = setInterval(weedsGrowth, weedsGrowingTime);
     trimmingInterval = false;
     $scissor.attr('src', 'assets/images/scissor0.png');
   }
 }
 
+function weedsGrowth() {
+  weedsGrowingTime = 20000 + Math.floor(Math.random() * 5);
+  $('#weeds').show();
+}
 //treeGrowth()
 //
 //Check for water level and fertilizing level to grow the tree
