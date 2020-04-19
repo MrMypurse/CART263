@@ -50,7 +50,7 @@ body {
 }
 
 #poembox {
-    position: absolute;
+  position: absolute;
   height: 300px;
   width: 270px;
   top: 31%;
@@ -87,4 +87,13 @@ body {
   height: 800px;
   left: 80%;
   top: 20%;
+}
+
+#ending {
+  position: absolute;
+  height: 400px;
+  width: 500px;
+  top: 15%;
+  left: 45%;
+  font-size: 25px;
 }

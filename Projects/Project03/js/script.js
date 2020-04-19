@@ -33,7 +33,7 @@ let generatedPoem;
 let createSentence;
 //set up pitch and rate for responsive responsive voice
 let pitchNumber = 0.1;
-let rateNumber = 0.6;
+let rateNumber = 0.65;
 //Add background music and sound effect
 const clickSound = new Audio('assets/sounds/click.wav');
 const ambienceSound = new Audio('assets/sounds/ambience.mp3');
@@ -73,10 +73,18 @@ function setup() {
         newPoem();
       },
       'I love you': function() {
-        waterlevel = watelevel + additionNumber;
+        waterlevel = waterlevel + additionNumber;
         fertilizelevel = fertilizelevel + additionNumber;
         newPoem();
-        }
+      },
+      'Talk to me': function() {
+        waterlevel = waterlevel + additionNumber;
+        fertilizelevel = fertilizelevel + additionNumber;
+        responsiveVoice.speak($(createSentence).text(), 'UK English Male', {
+          pitch: pitchNumber,
+          rate: rateNumber
+        })
+      }
     };
     // Add commands to annyang
     annyang.addCommands(commands);
@@ -134,6 +142,7 @@ function changeScreen() {
     $('body').click(function() {
       $('#title').hide();
       $('#introduction').hide();
+      $('#ending').hide();
       $('#gamebox').show();
     });
     state = 'PLAY';
@@ -303,9 +312,12 @@ function treeGrowth() {
   };
   if (waterlevel >= 160 && fertilizelevel >= 160) {
     $tree.attr("src", "assets/images/tree8.png");
+  };
+  if (waterlevel >= 165 && fertilizelevel >= 165) {
     state = 'END';
     endGame();
-  };
+    };
+
 }
 
 //dataLoaded
@@ -341,22 +353,22 @@ function getRandomArrayElement(array) {
 //
 //Add new generated poem when the tree is clicked
 function newPoem() {
-    $('.poem').remove();
-    $.getJSON('data/data.json')
-      .done(dataLoaded)
-      .fail(dataNotLoaded);
+  $('.poem').remove();
+  $.getJSON('data/data.json')
+    .done(dataLoaded)
+    .fail(dataNotLoaded);
 }
 
 //speakPoem()
 //
 //a function to call responsiveVoice to speak the words that the user clicked on
 function speakPoem() {
-  $('#tree').click(function(){
+  $('#tree').click(function() {
     responsiveVoice.speak($(createSentence).text(), 'UK English Male', {
       pitch: pitchNumber,
       rate: rateNumber
     });
-});
+  });
 }
 
 //generatedSounds()
@@ -372,7 +384,7 @@ function generateSounds() {
 
 function endGame() {
   if (state === 'END') {
-    $('.poem').remove();
-
+    $('#gamebox').remove();
+    $('#ending').show();
   }
 }
