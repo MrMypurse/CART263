@@ -43,12 +43,34 @@ const scissorSound = new Audio('assets/sounds/scissor.mp3');
 //
 //Set up variables and call functions to start game
 function setup() {
+  //start game with the menu and play background music
   changeScreen();
   generateSounds();
+  // Call for generating new poem
+  newPoem();
   //Get datas
   $.getJSON('data/data.json')
     .done(dataLoaded)
     .fail(dataNotLoaded);
+  //Set up Annyang voice commande
+  if (annyang) {
+    // Let's define our first command. First the text we expect, and then the function it should call
+    var commands = {
+      'hello': function() {
+        waterlevel += 5;
+        fertilizelevel += 5;
+      },
+      'I love you': function() {
+        waterlevel += 5;
+        fertilizelevel += 5;
+      }
+    };
+    // Add commands to annyang
+    annyang.addCommands(commands);
+    // Start listening
+    annyang.start();
+  };
+
   //store classes in variables
   $weeds = $('#weeds');
   $tree = $('#tree');
@@ -84,8 +106,7 @@ function setup() {
   $scissor.on("mouseup", function() {
     scissorCollision();
   })
-  // Call for generating new poem
-  newPoem();
+
 }
 
 function onDrop(event, ui) {
@@ -276,7 +297,7 @@ function treeGrowth() {
 //
 //Generate poems from the data if it is correctly loaded and add new poem to the body
 function dataLoaded(data) {
-  console.log(data);
+  //console.log(data);
   let randomPoem = getRandomArrayElement(data.text);
   generatedPoem = `${randomPoem}`;
   //Make a div box for the sentence and store the sentence in
@@ -290,7 +311,7 @@ function dataLoaded(data) {
 //
 //Insult you if the data isn't correctly loaded
 function dataNotLoaded(request, text, error) {
-  console.error('You fucked up.');
+  console.error('You fudged up.');
 }
 
 //getRandomArrayElement(array)
@@ -305,7 +326,7 @@ function getRandomArrayElement(array) {
 //
 //Add new generated poem when the tree is clicked
 function newPoem() {
-  $tree.click(function() {
+  $('#tree').click(function() {
     $('.poem').remove();
     $.getJSON('data/data.json')
       .done(dataLoaded)
