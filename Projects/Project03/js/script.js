@@ -2,11 +2,15 @@
 
 /********************************************************************
 
-Title of Project
-Author Name
+A Poem Lovely As A Tree
+Program: Janet Sun
+Art: Janet Sun
+Sound: freesound.org
 
-This is a template. Fill in the title, author, and this description
-to match your project! Write JavaScript to do amazing things below!
+You have left your 9 to 5 job in the city to persue the farm life you always wanted.
+Arriving at your farm, you find a small sapling. </p>
+Water it, fertilize it and care for it like you care for your dearest friend.
+If you love the tree, the tree will love you back.
 
 *********************************************************************/
 
@@ -19,12 +23,13 @@ let fertilizingInterval;
 let trimmingInterval;
 let weedsInterval;
 let weedsGrowingTime;
-//Set up variables
+//Set up objects
 let $weeds;
 let $tree;
 let $watercan;
 let $fertilizer;
 let $scissor;
+//Set up variables for growing the tree
 let waterlevel = 0;
 let fertilizelevel = 0;
 let additionNumber = 5;
@@ -50,7 +55,7 @@ function setup() {
   //start game with the menu and play background music
   changeScreen();
   generateSounds();
-  // Call for generating new poem
+  // Call for generating new poem and speak the poem using responsive voice
   newPoem();
   speakPoem();
   //Get datas
@@ -61,22 +66,27 @@ function setup() {
   if (annyang) {
     // Let's define our first command. First the text we expect, and then the function it should call
     var commands = {
+      //speak to start thegame
       'start game': function() {
         $('#title').hide();
         $('#introduction').hide();
+        $('#ending').hide();
         $('#gamebox').show();
         state = 'PLAY';
       },
+      //say "hello" to help the tree grow faster and generate new poem
       'hello': function() {
         waterlevel = waterlevel + additionNumber;
         fertilizelevel = fertilizelevel + additionNumber;
         newPoem();
       },
+      //say "I love you" to help the tree grow faster and generate new poem
       'I love you': function() {
         waterlevel = waterlevel + additionNumber;
         fertilizelevel = fertilizelevel + additionNumber;
         newPoem();
       },
+      //say "Talk to me" to help the tree grow faster and to make the tree talk
       'Talk to me': function() {
         waterlevel = waterlevel + additionNumber;
         fertilizelevel = fertilizelevel + additionNumber;
@@ -102,9 +112,7 @@ function setup() {
   $scissor.draggable();
   $watercan.draggable();
   $fertilizer.draggable();
-  $tree.droppable({
-    drop: onDrop
-  });
+  $tree.droppable();
   //Play sound when interacted with watering can
   $watercan.on("mousedown", function() {
     canSound.play();
@@ -127,11 +135,6 @@ function setup() {
   $scissor.on("mouseup", function() {
     scissorCollision();
   })
-
-}
-
-function onDrop(event, ui) {
-  console.log("DROPPED");
 }
 
 //changeScreen()
@@ -226,7 +229,9 @@ function wateringCollision() {
   if (collision === true) {
     wateringSound.play();
     waterlevel = waterlevel + additionNumber;
+    //generate new poem
     newPoem();
+    //set interval for animation
     if (!wateringInterval) {
       wateringInterval = setInterval(wateringAnimation, 300);
     }
@@ -246,7 +251,9 @@ function fertilizingCollision() {
   if (collision === true) {
     fertilizeSound.play();
     fertilizelevel = fertilizelevel + additionNumber;
+    //generate new poem
     newPoem();
+    //set interval for animation
     if (!fertilizingInterval) {
       fertilizingInterval = setInterval(fertilizingAnimation, 200);
     }
@@ -266,8 +273,9 @@ function scissorCollision() {
   if (collision === true) {
     $('.poem').remove();
     scissorSound.play();
+    //generate new poem
     newPoem();
-    //$('body').append('<p>trimmed</p>');
+    //set interval for animation
     if (!trimmingInterval) {
       trimmingInterval = setInterval(trimmingAnimation, 200);
       $('#weeds').hide();
@@ -281,10 +289,14 @@ function scissorCollision() {
   }
 }
 
+//weesGrowth()
+//
+//Regenerate weeds around the tree every 2 to 10 seconds randomly
 function weedsGrowth() {
   weedsGrowingTime = 20000 + Math.floor(Math.random() * 5);
   $('#weeds').show();
 }
+
 //treeGrowth()
 //
 //Check for water level and fertilizing level to grow the tree
@@ -313,11 +325,11 @@ function treeGrowth() {
   if (waterlevel >= 160 && fertilizelevel >= 160) {
     $tree.attr("src", "assets/images/tree8.png");
   };
+  //End the game when tree is fully grown
   if (waterlevel >= 165 && fertilizelevel >= 165) {
     state = 'END';
     endGame();
     };
-
 }
 
 //dataLoaded
@@ -382,6 +394,9 @@ function generateSounds() {
   })
 }
 
+//endGame()
+//
+//Display ending text
 function endGame() {
   if (state === 'END') {
     $('#gamebox').remove();
