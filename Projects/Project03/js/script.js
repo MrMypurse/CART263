@@ -27,9 +27,13 @@ let $fertilizer;
 let $scissor;
 let waterlevel = 0;
 let fertilizelevel = 0;
+let additionNumber = 5;
 //set up variables to store generated poems
 let generatedPoem;
 let createSentence;
+//set up pitch and rate for responsive responsive voice
+let pitchNumber = 0.1;
+let rateNumber = 0.6;
 //Add background music and sound effect
 const clickSound = new Audio('assets/sounds/click.wav');
 const ambienceSound = new Audio('assets/sounds/ambience.mp3');
@@ -64,13 +68,13 @@ function setup() {
         state = 'PLAY';
       },
       'hello': function() {
-        waterlevel = waterlevel + 5;
-        fertilizelevel = fertilizelevel + 5;
+        waterlevel = waterlevel + additionNumber;
+        fertilizelevel = fertilizelevel + additionNumber;
         newPoem();
       },
       'I love you': function() {
-        waterlevel = watelevel + 5;
-        fertilizelevel = fertilizelevel + 5;
+        waterlevel = watelevel + additionNumber;
+        fertilizelevel = fertilizelevel + additionNumber;
         newPoem();
         }
     };
@@ -212,7 +216,7 @@ function wateringCollision() {
   //if the two objects collide, play the sound effects, raise waterlevel and play the animation
   if (collision === true) {
     wateringSound.play();
-    waterlevel = waterlevel + 5;
+    waterlevel = waterlevel + additionNumber;
     newPoem();
     if (!wateringInterval) {
       wateringInterval = setInterval(wateringAnimation, 300);
@@ -232,7 +236,7 @@ function fertilizingCollision() {
   //if the two objects collide, play the sound effects, raise fertilizing level and play the animation
   if (collision === true) {
     fertilizeSound.play();
-    fertilizelevel = fertilizelevel + 5;
+    fertilizelevel = fertilizelevel + additionNumber;
     newPoem();
     if (!fertilizingInterval) {
       fertilizingInterval = setInterval(fertilizingAnimation, 200);
@@ -348,7 +352,10 @@ function newPoem() {
 //a function to call responsiveVoice to speak the words that the user clicked on
 function speakPoem() {
   $('#tree').click(function(){
-    responsiveVoice.speak($(createSentence).text(), 'UK English Female');
+    responsiveVoice.speak($(createSentence).text(), 'UK English Male', {
+      pitch: pitchNumber,
+      rate: rateNumber
+    });
 });
 }
 
