@@ -56,6 +56,12 @@ function setup() {
   if (annyang) {
     // Let's define our first command. First the text we expect, and then the function it should call
     var commands = {
+      'start game': function() {
+        $('#title').hide();
+        $('#introduction').hide();
+        $('#gamebox').show();
+        state = 'PLAY';
+      },
       'hello': function() {
         waterlevel += 5;
         fertilizelevel += 5;
@@ -346,7 +352,7 @@ function generateSounds() {
 }
 
 function endGame() {
-  if (state === 'END'){
+  if (state === 'END') {
     $('.poem').remove();
 
   }
