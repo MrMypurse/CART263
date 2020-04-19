@@ -58,6 +58,8 @@ function setup() {
   // Call for generating new poem and speak the poem using responsive voice
   newPoem();
   speakPoem();
+  //Check how much the tree has grown constantly
+  treeGrowth();
   //Get datas
   $.getJSON('data/data.json')
     .done(dataLoaded)
@@ -68,11 +70,8 @@ function setup() {
     var commands = {
       //speak to start thegame
       'start game': function() {
-        $('#title').hide();
-        $('#introduction').hide();
-        $('#ending').hide();
-        $('#gamebox').show();
         state = 'PLAY';
+        changeScreen();
       },
       //say "hello" to help the tree grow faster and generate new poem
       'hello': function() {
@@ -139,19 +138,58 @@ function setup() {
 
 //changeScreen()
 //
-//Change screen from menu to gameplay when the menu is clicked
+//Change screen between menu, gameplay and ending
 function changeScreen() {
   if (state === 'TITLE') {
-    $('body').click(function() {
-      $('#title').hide();
-      $('#introduction').hide();
-      $('#ending').hide();
-      $('#gamebox').show();
-    });
-    state = 'PLAY';
-    console.log(state);
+    titleScreen();
+  }
+  if (state === 'PLAY') {
+    playScreen();
+  }
+  if (state === 'END') {
+    endScreen();
   }
 }
+
+//titleScreen()
+//
+//Display the title screen
+function titleScreen(){
+  $('#title').show();
+  $('#introduction').show();
+  $('#ending').hide();
+  $('#gamebox').hide();
+  if (state === 'TITLE') {
+    $('body').click(function() {
+      state = 'PLAY';
+      changeScreen();
+    });
+  }
+  console.log(state);
+}
+
+//playScreen()
+//
+//Display the gameplay
+function playScreen(){
+  $('#title').hide();
+  $('#introduction').hide();
+  $('#ending').hide();
+  $('#gamebox').show();
+    console.log(state);
+}
+
+//endScreen()
+//
+//Display the ending
+function endScreen() {
+  $('#title').hide();
+  $('#introduction').hide();
+  $('#ending').show();
+  $('#gamebox').hide();
+    console.log(state);
+}
+
 
 //getPositions()
 //
@@ -301,6 +339,8 @@ function weedsGrowth() {
 //
 //Check for water level and fertilizing level to grow the tree
 function treeGrowth() {
+  console.log(waterlevel);
+  console.log(fertilizelevel);
   if (waterlevel >= 20 && fertilizelevel >= 20) {
     $tree.attr("src", "assets/images/tree1.png");
   };
@@ -322,14 +362,15 @@ function treeGrowth() {
   if (waterlevel >= 140 && fertilizelevel >= 140) {
     $tree.attr("src", "assets/images/tree7.png");
   };
+  //End the game when tree is fully grown
   if (waterlevel >= 160 && fertilizelevel >= 160) {
     $tree.attr("src", "assets/images/tree8.png");
   };
-  //End the game when tree is fully grown
   if (waterlevel >= 165 && fertilizelevel >= 165) {
     state = 'END';
-    endGame();
-    };
+    changeScreen();
+    console.log(state);
+  };
 }
 
 //dataLoaded
@@ -392,14 +433,4 @@ function generateSounds() {
   $('body').click(function() {
     clickSound.play();
   })
-}
-
-//endGame()
-//
-//Display ending text
-function endGame() {
-  if (state === 'END') {
-    $('#gamebox').remove();
-    $('#ending').show();
-  }
 }
