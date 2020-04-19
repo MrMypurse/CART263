@@ -225,7 +225,7 @@ function trimmingAnimation() {
 //Call checking collision between watering can and tree
 function wateringCollision() {
   let collision = checkCollision($watercan, $tree);
-  //if the two objects collide, play the sound effects, raise waterlevel and play the animation
+  //if the two objects collide, generate new poem, raise waterlevel, play the sound effects and the animation
   if (collision === true) {
     wateringSound.play();
     waterlevel = waterlevel + additionNumber;
@@ -247,7 +247,7 @@ function wateringCollision() {
 //Call checking collision between fertilizer and tree
 function fertilizingCollision() {
   let collision = checkCollision($fertilizer, $tree);
-  //if the two objects collide, play the sound effects, raise fertilizing level and play the animation
+  //if the two objects collide, generate new poem , raise fertilizing level and play the animation and the sound
   if (collision === true) {
     fertilizeSound.play();
     fertilizelevel = fertilizelevel + additionNumber;
@@ -269,7 +269,7 @@ function fertilizingCollision() {
 //Call checking collision between fertilizer and tree
 function scissorCollision() {
   let collision = checkCollision($scissor, $tree);
-  //if the two objects collide, play the sound effects and play the animation
+  //if the two objects collide, generate a new poem, play the sound effects and the animation
   if (collision === true) {
     $('.poem').remove();
     scissorSound.play();
