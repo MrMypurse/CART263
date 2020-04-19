@@ -63,13 +63,15 @@ function setup() {
         state = 'PLAY';
       },
       'hello': function() {
-        waterlevel += 5;
-        fertilizelevel += 5;
+        waterlevel = waterlevel + 5;
+        fertilizelevel = fertilizelevel + 5;
+        newPoem();
       },
       'I love you': function() {
-        waterlevel += 5;
-        fertilizelevel += 5;
-      }
+        waterlevel = watelevel + 5;
+        fertilizelevel = fertilizelevel + 5;
+        newPoem();
+        }
     };
     // Add commands to annyang
     annyang.addCommands(commands);
@@ -210,7 +212,7 @@ function wateringCollision() {
   if (collision === true) {
     wateringSound.play();
     waterlevel = waterlevel + 5;
-    //$('body').append('<p> WATERED </p>');
+    newPoem();
     if (!wateringInterval) {
       wateringInterval = setInterval(wateringAnimation, 300);
     }
@@ -230,7 +232,7 @@ function fertilizingCollision() {
   if (collision === true) {
     fertilizeSound.play();
     fertilizelevel = fertilizelevel + 5;
-    //$('body').append('<p>fertilized</p>');
+    newPoem();
     if (!fertilizingInterval) {
       fertilizingInterval = setInterval(fertilizingAnimation, 200);
     }
@@ -248,7 +250,9 @@ function scissorCollision() {
   let collision = checkCollision($scissor, $tree);
   //if the two objects collide, play the sound effects and play the animation
   if (collision === true) {
+    $('.poem').remove();
     scissorSound.play();
+    newPoem();
     //$('body').append('<p>trimmed</p>');
     if (!trimmingInterval) {
       trimmingInterval = setInterval(trimmingAnimation, 200);
@@ -332,12 +336,10 @@ function getRandomArrayElement(array) {
 //
 //Add new generated poem when the tree is clicked
 function newPoem() {
-  $('#tree').click(function() {
     $('.poem').remove();
     $.getJSON('data/data.json')
       .done(dataLoaded)
       .fail(dataNotLoaded);
-  })
 }
 
 //generatedSounds()
